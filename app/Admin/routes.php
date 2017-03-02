@@ -11,6 +11,7 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
+    $router->get('/sign', 'SignLogscontroller@index');
 
     $router->resources([
         'vcats'  => 'VcatsController',

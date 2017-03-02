@@ -20,6 +20,8 @@ class CreateConferencesTable extends Migration
             $table->time('end_time')->nullable();
             $table->string('name');
             $table->text('description');
+            $table->smallInteger('sign_count');
+            $table->smallInteger('sign_vcat_count');
             $table->timestamps();
         });
     }

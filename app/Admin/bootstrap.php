@@ -18,4 +18,10 @@
  *
  */
 
+use Encore\Admin\Grid\Column;
+use App\Admin\Extensions\Column\ExpandRow;
+
+
 Encore\Admin\Form::forget(['map', 'editor']);
+
+Column::extend('expand', ExpandRow::class);

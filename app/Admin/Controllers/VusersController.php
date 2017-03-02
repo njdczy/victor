@@ -64,6 +64,11 @@ class VusersController extends Controller
 
             $grid->filter(function ($filter) {
                 $filter->useModal();
+                $filter->disableIdFilter();
+                $filter->equal('vcat_id', '类别')
+                    ->select(function () {
+                        return Vcat::selectOptions();
+                    });
                 $filter->like('name','参会人员');
                 $filter->like('code','客户编码');
                 $filter->like('hotel','入住酒店');

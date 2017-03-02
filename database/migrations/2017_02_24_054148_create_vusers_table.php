@@ -28,6 +28,7 @@ class CreateVusersTable extends Migration
             $table->boolean('is_need_sms')->default(1)->index();
             $table->boolean('has_sms')->default(0)->index();
             $table->boolean('is_enter')->default(0)->index();
+            $table->boolean('is_sign')->default(0)->index();
             $table->string('hotel')->nullable();
             $table->string('gravatar')->nullable();
             $table->softDeletes();

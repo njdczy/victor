@@ -18,6 +18,7 @@ class CreateVcatsTable extends Migration
             $table->unsignedSmallInteger('parent_id')->default(0)->index();
             $table->string('title')->nullable();
             $table->SmallInteger('order')->default(0);
+            $table->boolean('is_sign')->default(0)->index();
             $table->index(['created_at']);
             $table->timestamps();
         });

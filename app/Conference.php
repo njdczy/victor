@@ -8,4 +8,5 @@ use Encore\Admin\Traits\AdminBuilder;
 class Conference extends Model
 {
     use AdminBuilder;
+
 }

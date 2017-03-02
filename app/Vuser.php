@@ -27,5 +27,4 @@ class Vuser extends Model
         'gravatar',
     ];
 
-
 }
