@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -10,12 +9,12 @@ return [
     /*
      * Logo in admin panel header.
      */
-    'logo'      => '<b>Laravel</b> admin',
+    'logo'      => '<b>Victor</b> 会议管理系统',
 
     /*
      * Mini-logo in admin panel header.
      */
-    'logo-mini' => '<b>La</b>',
+    'logo-mini' => '<b>Victor</b>',
 
     /*
      * Laravel-admin url prefix.
@@ -53,7 +52,7 @@ return [
             'file'   => 'file',
         ],
 
-        'host' => 'http://localhost:8000/upload/',
+        'host' => public_path(). '/upload/',
     ],
 
     /*

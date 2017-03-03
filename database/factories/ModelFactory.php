@@ -29,7 +29,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Vuser::class, function (Faker\Generator $faker) {
     return [
         'vcat_id' => 4,
-        'province_id' => 1,
+        'province_id' => 2,
         'name' => $faker->userName,
         'post' => $faker->userName,
         'mobile' => '1' . $faker->shuffle('1234567890'),
