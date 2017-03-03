@@ -69,6 +69,10 @@ class VusersController extends Controller
                     ->select(function () {
                         return Vcat::selectOptions();
                     });
+                $filter->equal('is_enter', '是否报名')
+                    ->select([0=>'否',1=>'是']);
+                $filter->equal('has_attend', '是否参加过订货会')
+                    ->select([0=>'否',1=>'是']);
                 $filter->like('name','参会人员');
                 $filter->like('code','客户编码');
                 $filter->like('hotel','入住酒店');

@@ -44,17 +44,21 @@ class SignLogsController extends Controller
             $grid->name('会议名称');
             $grid->sign_count('签到人数');
             $grid->sign_vcat_count('签到家数');
-            $grid->column('details','签到详情')->expand(function () {
-                $the_sign_logs = SignLog::where('id', '=', $this->id)->pluck('id')->flatten()->all();
-                $name = Vuser::whereIn($the_sign_logs)->pluck('name')->all();
-                dump($name);exit;
+            $tmp = SignLog::select('vuser_id','conference_id')->get()->toArray();
+            $conference_ids_array = array_unique(array_column($tmp, 'conference_id'));
+            foreach ($conference_ids_array as $conference_id) {
+                $the_tmp = [];
+                foreach ($tmp as $key => $value) {
+                    if($value['conference_id'] == $conference_id){
+                        array_push($the_tmp,$value['vuser_id']);
+                    }
+                }
+                $array[$conference_id] = $the_tmp;
+            }
+            $grid->column('details','签到详情')->expand(function () use ($array) {
+            $name = Vuser::whereIn('id',$array[$this->id])->pluck('name')->all();
                 $rows = [
-                    ['',' <b>签到人名单:</b>刘云山	▪ 刘延东	▪ 刘奇葆	▪ 许其亮▪ 孙春兰	▪ 孙政才	▪ 李克强	▪ 李建国▪ 李源潮	▪ 汪洋	▪ 张春贤	▪ 张高丽
-                            ▪ 张德江	▪ 范长龙	▪ 孟建柱	▪ 赵乐际▪ 胡春华	▪ 俞正声	▪ 栗战书	▪ 郭金龙▪ 韩正▪ 刘延东	▪ 刘奇葆	▪ 许其亮▪ 孙春兰	▪ 孙政才	▪ 李克强	▪ 李建国▪ 李源潮	▪ 汪洋	▪ 张春贤	▪ 张高丽
-                            ▪ 张德江	▪ 范长龙	▪ 孟建柱	▪ 赵乐际▪ 胡春华	▪ 俞正声	▪ 栗战书	▪ 郭金龙▪ 韩正▪ 刘延东	▪ 刘奇葆	▪ 许其亮▪ 孙春兰	▪ 孙政才	▪ 李克强	▪ 李建国▪ 李源潮	▪ 汪洋	▪ 张春贤	▪ 张高丽
-                            ▪ 张德江	▪ 范长龙	▪ 孟建柱	▪ 赵乐际▪ 胡春华	▪ 俞正声	▪ 栗战书	▪ 郭金龙▪ 韩正▪ 刘延东	▪ 刘奇葆	▪ 许其亮▪ 孙春兰	▪ 孙政才	▪ 李克强	▪ 李建国▪ 李源潮	▪ 汪洋	▪ 张春贤	▪ 张高丽
-                            ▪ 张德江	▪ 范长龙	▪ 孟建柱	▪ 赵乐际▪ 胡春华	▪ 俞正声	▪ 栗战书	▪ 郭金龙▪ 韩正▪ 刘延东	▪ 刘奇葆	▪ 许其亮▪ 孙春兰	▪ 孙政才	▪ 李克强	▪ 李建国▪ 李源潮	▪ 汪洋	▪ 张春贤	▪ 张高丽
-                            ▪ 张德江	▪ 范长龙	▪ 孟建柱	▪ 赵乐际▪ 胡春华	▪ 俞正声	▪ 栗战书	▪ 郭金龙▪ 韩正']
+                    ['',' <b>签到人名单&nbsp;:</b>&nbsp;' . implode(' ▪ ',$name)]
                 ];
                 return new Table([], $rows);
 

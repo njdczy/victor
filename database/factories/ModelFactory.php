@@ -28,7 +28,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Vuser::class, function (Faker\Generator $faker) {
     return [
-        'vcat_id' => 1,
+        'vcat_id' => 4,
         'province_id' => 1,
         'name' => $faker->userName,
         'post' => $faker->userName,
@@ -37,6 +37,7 @@ $factory->define(App\Vuser::class, function (Faker\Generator $faker) {
         'company' => $faker->company,
         'salesman_id' => 1,
         'regional_manager_id' => 1,
+        'hotel' => $faker->company,
         'is_sign' => $faker->boolean?1:0,
         'created_at'           => Carbon::now()->toDateTimeString(),
         'updated_at'           => Carbon::now()->toDateTimeString(),
@@ -76,9 +77,12 @@ $factory->define(App\Conference::class, function (Faker\Generator $faker) {
 
 
 $factory->define(App\SignLog::class, function (Faker\Generator $faker) {
+
+    $conference_ids_array = \App\Conference::pluck('id') ->flatten(1)->all();
     return [
         'vuser_id' => $faker->numberBetween(0,60),
         'admin_user_name' => $faker->userName,
+        'conference_id' => $conference_ids_array[array_rand($conference_ids_array,1)],
         'conference_name' => $faker->userName,
         'created_at'           => Carbon::now()->toDateTimeString(),
         'updated_at'           => Carbon::now()->toDateTimeString(),

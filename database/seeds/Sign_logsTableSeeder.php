@@ -12,7 +12,7 @@ class Sign_logsTableSeeder extends Seeder
      */
     public function run()
     {
-        $sign_logs = factory(SignLog::class)->times(2)->make();
+        $sign_logs = factory(SignLog::class)->times(50)->make();
         SignLog::insert($sign_logs->toArray());
     }
 }
