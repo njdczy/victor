@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProvincesTableSeeder::class);
         $this->call(ConfrerensTableSeeder::class);
         $this->call(Sign_logsTableSeeder::class);
+        $this->call(HotelsTableSeeder::class);
     }
 }

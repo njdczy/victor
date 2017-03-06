@@ -34,6 +34,7 @@ $factory->define(App\Vuser::class, function (Faker\Generator $faker) {
         'post' => $faker->userName,
         'mobile' => '1' . $faker->shuffle('1234567890'),
         'code' => $faker->shuffle('12345678'),
+        'card' => $faker->shuffle('12345678'),
         'company' => $faker->company,
         'salesman_id' => 1,
         'regional_manager_id' => 1,
@@ -84,6 +85,15 @@ $factory->define(App\SignLog::class, function (Faker\Generator $faker) {
         'admin_user_name' => $faker->userName,
         'conference_id' => $conference_ids_array[array_rand($conference_ids_array,1)],
         'conference_name' => $faker->userName,
+        'created_at'           => Carbon::now()->toDateTimeString(),
+        'updated_at'           => Carbon::now()->toDateTimeString(),
+    ];
+});
+
+
+$factory->define(App\Hotel::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->userName,
         'created_at'           => Carbon::now()->toDateTimeString(),
         'updated_at'           => Carbon::now()->toDateTimeString(),
     ];

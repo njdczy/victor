@@ -56,12 +56,13 @@ class SignLogsController extends Controller
                 $array[$conference_id] = $the_tmp;
             }
             $grid->column('details','签到详情')->expand(function () use ($array) {
-            $name = Vuser::whereIn('id',$array[$this->id])->pluck('name')->all();
-                $rows = [
-                    ['',' <b>签到人名单&nbsp;:</b>&nbsp;' . implode(' ▪ ',$name)]
-                ];
-                return new Table([], $rows);
-
+                if (is_array($array)) {
+                    $name = Vuser::whereIn('id',$array[$this->id])->pluck('name')->all();
+                    $rows = [
+                        ['',' <b>签到人名单&nbsp;:</b>&nbsp;' . implode(' ▪ ',$name)]
+                    ];
+                    return new Table([], $rows);
+                }
             }, 'details');
             $grid->disableExport();
             $grid->disableBatchDeletion();

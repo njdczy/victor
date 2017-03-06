@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Extensions\Tools\BatchEnter;
+use App\Admin\Extensions\Tools\DelCard;
 use App\Http\Controllers\Controller;
 
 
@@ -19,6 +20,8 @@ use App\Vcat;
 use App\Salesman;
 use App\Manager;
 use App\Province;
+use App\Hotel;
+use Illuminate\Support\Facades\DB;
 
 class VusersController extends Controller
 {
@@ -36,6 +39,7 @@ class VusersController extends Controller
     private function grid()
     {
         return Vuser::grid(function (Grid $grid) {
+            $grid->model()->orderBy('created_at','desc');
             $grid->vcat_id('类别')->display(function($vcat_id){
                 return Vcat::find($vcat_id)->title;
             });
@@ -46,9 +50,14 @@ class VusersController extends Controller
             $grid->post('职务')->editable();
             $grid->mobile('手机号')->editable();
             $grid->code('客户编码')->editable();
+            $grid->card('卡号')->editable();
             $grid->salesman_id('业务员')->display(function($salesman_id) {
                 return Salesman::find($salesman_id)->name;
             });
+            $grid->regional_manager_id('区域经理')->display(function($regional_manager_id) {
+                return Manager::find($regional_manager_id)->name;
+            });
+            $grid->hotel('入住酒店')->editable();
             $states = [
                 'on' => ['text' => '是'],
                 'off' => ['text' => '否'],
@@ -56,11 +65,6 @@ class VusersController extends Controller
             $grid->column('switch_group','是否')->switchGroup([
                 'has_attend' => '参加过订货会', 'is_need_sms' => '推送短信', 'is_enter' => '已报名'
             ], $states);
-
-            $grid->regional_manager_id('区域经理')->display(function($regional_manager_id) {
-                return Manager::find($regional_manager_id)->name;
-            });
-            $grid->hotel('入住酒店')->editable();
 
             $grid->filter(function ($filter) {
                 $filter->useModal();
@@ -78,6 +82,8 @@ class VusersController extends Controller
                 $filter->like('hotel','入住酒店');
             });
             $grid->tools(function ($tools) {
+                $tools->append(new DelCard());
+
                 $tools->batch(function ($batch) {
                     $batch->add('批量报名', new BatchEnter(1));
                 });
@@ -112,13 +118,14 @@ class VusersController extends Controller
             $form->text('post', '职务')->rules('required');
             $form->text('mobile', '手机号')->rules('required');
             $form->text('code', '客户编码')->rules('required');
+            $form->text('card', '卡号')->rules('required');
             $form->select('salesman_id', '业务员')->options(Salesman::all()->pluck('name', 'id'));
             $form->switch('has_attend','参加过订货会');
             $form->switch('is_need_sms','推送短信');
             $form->switch('is_enter','报名');
             $form->select('regional_manager_id', '区域经理')->options(Manager::all()->pluck('name', 'id'));
             $form->text('company', '客户单位')->rules('required');
-            $form->text('hotel', '入住酒店')->rules('required');
+            $form->select('hotel', '入住酒店')->options(Hotel::all()->pluck('name', 'id'));
         });
     }
 
@@ -127,6 +134,13 @@ class VusersController extends Controller
         foreach (Vuser::find($request->get('ids')) as $vuser) {
             $vuser->is_enter = $request->get('action');
             $vuser->save();
+        }
+    }
+
+    public function delCard(Request $request)
+    {
+        if ($request->ajax()) {
+            DB::table('vusers')->update(['card' => '']);
         }
     }
 }

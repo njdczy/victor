@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f94f09d6d0bc938ecb52a246b1cc4d9c",
+    "content-hash": "5e2987fc4964ac42388742695c5853c8",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -216,16 +216,16 @@
         },
         {
             "name": "encore/laravel-admin",
-            "version": "v1.3.3",
+            "version": "1.3.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/z-song/laravel-admin.git",
-                "reference": "7182df454f2a6efef2fc5360d8db35bbe8ec0497"
+                "reference": "0b54339c8a101066f8cfc18057969cdb2d9f8cec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/7182df454f2a6efef2fc5360d8db35bbe8ec0497",
-                "reference": "7182df454f2a6efef2fc5360d8db35bbe8ec0497",
+                "url": "https://files.phpcomposer.com/files/z-song/laravel-admin/0b54339c8a101066f8cfc18057969cdb2d9f8cec.zip",
+                "reference": "0b54339c8a101066f8cfc18057969cdb2d9f8cec",
                 "shasum": ""
             },
             "require": {
@@ -272,7 +272,7 @@
                 "grid",
                 "laravel"
             ],
-            "time": "2017-02-20T07:23:50+00:00"
+            "time": "2017-03-05T08:07:37+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3631,7 +3631,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "encore/laravel-admin": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

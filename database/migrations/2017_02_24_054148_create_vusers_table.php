@@ -21,6 +21,7 @@ class CreateVusersTable extends Migration
             $table->string('post');
             $table->string('mobile',11)->unique();
             $table->string('code',30);
+            $table->string('card');
             $table->string('company');
             $table->boolean('has_attend')->default(0);
             $table->unsignedSmallInteger('salesman_id');

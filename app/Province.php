@@ -2,10 +2,10 @@
 
 namespace App;
 
+use Encore\Admin\Traits\AdminBuilder;
 use Illuminate\Database\Eloquent\Model;
 
-use Encore\Admin\Traits\ModelTree;
 class Province extends Model
 {
-    use ModelTree;
+    use AdminBuilder;
 }
