@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
 
+use App\Vcat;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
@@ -22,35 +23,37 @@ class ConferencesController extends Controller
 
     public function index()
     {
-        $date = Conference::pluck('date', 'date')
-            ->flatten(1)
-            ->all();
+//        $date = Conference::pluck('date', 'date')
+//            ->flatten(1)
+//            ->all();
 
-        return Admin::content(function (Content $content) use ($date) {
+        return Admin::content(function (Content $content)  {
             $content->header('会议');
             $content->description('列表');
-
-            for ($i = 0; $i < ceil(count($date) / 2); $i++) {
-                $content->row(function (Row $row) use ($date, $i) {
-                    for ($key = $i * 2; $key <= $i * 2 + 1; $key++) {
-                        if (isset($date[$key])) {
-                            $row->column(6, function (Column $column) use ($date, $key) {
-                                $column->append((
-                                new Box(
-                                    $date[$key], $this->grid($date[$key])
-                                )));
-                            });
-                        }
-                    }
-                });
-            }
+            $content->row(
+                $this->grid()
+            );
+//            for ($i = 0; $i < ceil(count($date) / 2); $i++) {
+//                $content->row(function (Row $row) use ($date, $i) {
+//                    for ($key = $i * 2; $key <= $i * 2 + 1; $key++) {
+//                        if (isset($date[$key])) {
+//                            $row->column(6, function (Column $column) use ($date, $key) {
+//                                $column->append((
+//                                new Box(
+//                                    $date[$key], $this->grid($date[$key])
+//                                )));
+//                            });
+//                        }
+//                    }
+//                });
+//            }
         });
     }
 
-    protected function grid($date)
+    protected function grid()
     {
-        return Admin::grid(Conference::class, function (Grid $grid) use ($date) {
-            $grid->model()->where('date', '=', $date);
+        return Admin::grid(Conference::class, function (Grid $grid)  {
+            //$grid->model()->where('date', '=', $date);
             $grid->column('time','时间')->display(function () {
                 return $this->start_time.'-'.$this->end_time;
             });
@@ -60,11 +63,12 @@ class ConferencesController extends Controller
                     return '<pre>' . $description . '</pre>';
                 }
             );
+            $grid->vcats('参加该会议的单位')->pluck('title')->label();
+
             $grid->disableExport();
             $grid->disableBatchDeletion();
             $grid->disableRowSelector();
             $grid->disableFilter();
-            $grid->disablePagination();
         });
     }
 
@@ -89,10 +93,10 @@ class ConferencesController extends Controller
     protected function form()
     {
         return Conference::form(function (Form $form) {
-            $form->date('date','日期')->rules('required');
-            $form->timeRange('start_time', 'end_time', '时间范围')->rules('required');
+            $form->dateTimeRange('start_time', 'end_time', '时间范围');
             $form->text('name', '名称')->rules('required');
             $form->textarea('description', '地点')->placeholder('输入会议描述或地点（每句话结束请换行）')->rules('required');
+            $form->multipleSelect('vcats','参加该会议的单位')->options(Vcat::all()->pluck('title', 'id'));
         });
     }
 }

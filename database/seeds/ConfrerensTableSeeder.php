@@ -12,7 +12,7 @@ class ConfrerensTableSeeder extends Seeder
      */
     public function run()
     {
-        $conferences = factory(Conference::class)->times(10)->make();
+        $conferences = factory(Conference::class)->times(25)->make();
         Conference::insert($conferences->toArray());
     }
 }

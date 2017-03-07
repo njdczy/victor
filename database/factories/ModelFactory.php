@@ -69,7 +69,6 @@ $factory->define(App\Conference::class, function (Faker\Generator $faker) {
         'end_time'           => Carbon::now()->toTimeString(),
         'name'           => $faker->userName,
         'description'           => $faker->userName,
-        'sign_vcat_count'           => $sign_vcat_count,
         'sign_count'           => $faker->numberBetween($sign_vcat_count,1000),
         'created_at'           => Carbon::now()->toDateTimeString(),
         'updated_at'           => Carbon::now()->toDateTimeString(),
