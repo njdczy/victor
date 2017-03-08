@@ -1,17 +1,22 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2017-03-08
+ * Time: 上午 9:56
+ */
 
 namespace App\Admin\Extensions\Tools;
 
 use Encore\Admin\Admin;
 use Encore\Admin\Grid\Tools\AbstractTool;
 use Illuminate\Support\Facades\Request;
-
-class DelCard extends AbstractTool
+class SendSms extends AbstractTool
 {
     public $ajax_url;
     public function __construct()
     {
-        $this->ajax_url = 'del_card';
+        $this->ajax_url = 'send_sms';
     }
 
     protected function script()
@@ -23,17 +28,18 @@ class DelCard extends AbstractTool
 
 $('.grid-tools-{$this->ajax_url}').on('click', function() {
 
-    if(confirm("确定要清除所有人员的卡号信息？")) {
+    if(confirm("短信内容：（邀请你参加订货会），是否发送？")) {
         $.ajax({
             method: 'post',
             url: '{$this->ajax_url}',
             data: {
-               '_method': 'PATCH',
                _token:'{$token}'
             },
+            beforeSend: function(){
+                toastr.warning('随着发送人数增多，发送需要一段时间，不要关闭网页');
+            },
             success: function () {
-                $.pjax({container:'#pjax-container', url: '/{$path}' });
-                toastr.success('操作成功');
+                toastr.success('发送成功');
             }
         });
     }
@@ -46,7 +52,7 @@ EOT;
         Admin::script($this->script());
         return view('admin.tools.button',
             [
-                'button_name'=>'一键清除卡号',
+                'button_name'=>'一键发送短信',
                 'ajax_url'=> $this->ajax_url
             ]
         );

@@ -17,6 +17,7 @@ class CreateDemoTaggables extends Migration
             $table->unsignedSmallInteger('vcat_id');
             $table->unsignedSmallInteger('taggable_id');
             $table->string('taggable_type');
+            $table->boolean('is_sign')->default(0);
             $table->timestamps();
         });
     }

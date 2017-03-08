@@ -13,12 +13,14 @@ class VcatsTableSeeder extends Seeder
     public function run()
     {
         $id1 = Vcat::insertGetId([
-            'title' => '经销商'
+            'title' => '经销商',
+            'is_father' => 1,
         ]);
         $id2 = Vcat::insertGetId([
-            'title' => '公司职员'
+            'title' => '工作人员',
+            'is_father' => 1,
         ]);
-        $id3 = Vcat::insertGetId([
+        Vcat::insertGetId([
             'title' => '嘉宾'
         ]);
 

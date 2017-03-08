@@ -96,7 +96,8 @@ class ConferencesController extends Controller
             $form->dateTimeRange('start_time', 'end_time', '时间范围');
             $form->text('name', '名称')->rules('required');
             $form->textarea('description', '地点')->placeholder('输入会议描述或地点（每句话结束请换行）')->rules('required');
-            $form->multipleSelect('vcats','参加该会议的单位')->options(Vcat::all()->pluck('title', 'id'));
+            $form->multipleSelect('vcats','参加该会议的单位')
+                ->options(Vcat::all()->where('is_father','=',0)->pluck('title', 'id'));
         });
     }
 }

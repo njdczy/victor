@@ -16,6 +16,10 @@ use Encore\Admin\Form;
 use Encore\Admin\Controllers\ModelForm;
 
 use App\Vcat;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+
 class VcatsController extends Controller
 {
     use ModelForm;
@@ -64,6 +68,52 @@ class VcatsController extends Controller
 
             $content->row($this->form()->edit($id));
         });
+    }
+
+    public function store()
+    {
+        $parent_id = Input::get('parent_id');
+        DB::table('vcats')->where('id','=',$parent_id)->update(['is_father' => 1]);
+        return $this->form()->store();
+    }
+
+    public function update($id)
+    {
+        $old_parent_id = DB::table('vcats')->select('parent_id')->where('id','=',$id)->first();
+        $new_parent_id = Input::get('parent_id');
+        //如果修改了父级分类
+        if ($old_parent_id->parent_id != $new_parent_id) {
+            //设置新父级分类is_father为1
+            DB::table('vcats')->where('id','=',$new_parent_id)->update(['is_father' => 1]);
+            //如果旧的父级分类只有当前要更新的子类一个子类  设置is_father为0
+            $count = DB::table('vcats')->select('id')->where('parent_id','=',$old_parent_id->parent_id)->count();
+            if ($count == 1) {
+                DB::table('vcats')->where('id','=',$old_parent_id->parent_id)->update(['is_father' => 0]);
+            }
+        }
+        return $this->form()->update($id);
+    }
+
+    public function destroy($id)
+    {
+        $parent_id = DB::table('vcats')->select('parent_id')->where('id','=',$id)->first();
+
+        if ($this->form()->destroy($id)) {
+            $count = DB::table('vcats')->select('id')->where('parent_id','=',$parent_id->parent_id)->count();
+
+            if ($count == 0) {
+                DB::table('vcats')->where('id','=',$parent_id->parent_id)->update(['is_father' => 0]);
+            }
+            return response()->json([
+                'status'  => true,
+                'message' => trans('admin::lang.delete_succeeded'),
+            ]);
+        } else {
+            return response()->json([
+                'status'  => false,
+                'message' => trans('admin::lang.delete_failed'),
+            ]);
+        }
     }
 
     private function form()

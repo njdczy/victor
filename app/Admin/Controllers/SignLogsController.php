@@ -22,6 +22,7 @@ use App\SignLog;
 use App\Conference;
 use App\Vuser;
 use App\Vcat;
+use Illuminate\Support\Facades\DB;
 
 class SignLogsController extends Controller
 {
@@ -97,21 +98,29 @@ class SignLogsController extends Controller
 
                 $grid->name('会议名称');
                 $grid->column('should_vuser_ids','应签到人数')->display(function ()  {
-                    if ($this->should_vcat_ids ) {
-                        $should_vcat_ids_array = explode($this->should_vcat_ids,',');
-                        return $count = Vuser::whereIn('id',$should_vcat_ids_array)
-                            ->pluck('id','id')->count();
-                    } else {
-                      return 0;
+                    //  应签到人数 s
+                    $vcat_ids = DB::table('demo_taggables')
+                        ->select('vcat_id')
+                        ->where('taggable_id','=',$this->id)
+                        ->get()
+                        ->toArray();
+                    foreach ($vcat_ids as $k => $vcat_id) {
+                        $in_array[] = $vcat_id->vcat_id;
                     }
-
-                });;
+                    return $count = Vuser::whereIn('vcat_id',$in_array)->pluck('id','id')->count();
+                    // 应签到人数 e
+                });
                 $grid->sign_count('实签到人数');
                 $grid->should_vcat_ids('应签到家数')->display(function () {
-                    return $this->should_vcat_ids?count(explode($this->should_vcat_ids,',')):0;
+                    return DB::table('demo_taggables')->where('taggable_id','=',$this->id)->count();
+                    //return $this->should_vcat_ids?count(explode($this->should_vcat_ids,',')):0;
                 });
                 $grid->sign_vcat_ids('实签到家数')->display(function () {
-                    return $this->should_vcat_ids?count(explode($this->sign_vcat_ids,',')):0;
+                    return DB::table('demo_taggables')
+                        ->where('taggable_id','=',$this->id)
+                        ->where('is_sign','=',1)
+                        ->count();
+                    //return $this->should_vcat_ids?count(explode($this->sign_vcat_ids,',')):0;
                 });
 
 //                foreach ($conference_ids_array as $conference_id) {

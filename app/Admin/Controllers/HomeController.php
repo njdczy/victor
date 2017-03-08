@@ -11,16 +11,7 @@ use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
 use Encore\Admin\Widgets\Box;
-use Encore\Admin\Widgets\Chart\Bar;
-use Encore\Admin\Widgets\Chart\Doughnut;
-use Encore\Admin\Widgets\Chart\Line;
-use Encore\Admin\Widgets\Chart\Pie;
-use Encore\Admin\Widgets\Chart\PolarArea;
-use Encore\Admin\Widgets\Chart\Radar;
-use Encore\Admin\Widgets\Collapse;
 use Encore\Admin\Widgets\InfoBox;
-use Encore\Admin\Widgets\Tab;
-use Encore\Admin\Widgets\Table;
 
 
 
@@ -44,29 +35,27 @@ class HomeController extends Controller
                 $row->column(3, new InfoBox('已报到家数', 'file', 'red', '/admin/sign', $sign_vcat_count));
             });
 
-            $content->row(function (Row $row) {
-
-                $row->column(6, function (Column $column) {
 
 
-                    $collapse = new Collapse();
+            $content->row(function ($row)  {
+//                $form = new Form();
+//                $form->disableReset();
+//                $form->disableSubmit();
+//
+//                $form->textarea('sms_content','短信内容')
+//                    ->attribute('disabled', 'disabled')
+//                    ->placeholder('邀请您参加订货会');
+//                //$form->divide();
 
-                    $bar = new Bar(
-                        ["January", "February", "March", "April", "May", "June", "July"],
-                        [
-                            ['First', [40,56,67,23,10,45,78]],
-                            ['Second', [93,23,12,23,75,21,88]],
-                            ['Third', [33,82,34,56,87,12,56]],
-                            ['Forth', [34,25,67,12,48,91,16]],
-                        ]
-                    );
-                    $collapse->add('Bar', $bar);
-                    $column->append($collapse);
-
-                });
-
-
+                $box = new Box('第二个容器',
+                    '<p>邀请您参加订货会</p>
+                     <hr>
+                    <button>发送短信</button>'
+                );
+                $row->column(2,function(){});
+                $row->column(8,$box->style('primary'));
             });
+
 
         });
     }

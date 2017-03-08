@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Extensions\Tools\BatchEnter;
 use App\Admin\Extensions\Tools\DelCard;
+use App\Admin\Extensions\Tools\BatchSend;
 use App\Http\Controllers\Controller;
 
 
@@ -66,6 +67,10 @@ class VusersController extends Controller
                 'has_attend' => '参加过订货会', 'is_need_sms' => '推送短信', 'is_enter' => '已报名'
             ], $states);
 
+            $grid->has_sms('已发送短信')->display(function() {
+                return $this->has_sms? '是':'否';
+            });
+
             $grid->filter(function ($filter) {
                 $filter->useModal();
                 $filter->disableIdFilter();
@@ -77,15 +82,19 @@ class VusersController extends Controller
                     ->select([0=>'否',1=>'是']);
                 $filter->equal('has_attend', '是否参加过订货会')
                     ->select([0=>'否',1=>'是']);
+                $filter->equal('has_sms', '是否发送过短信')
+                    ->select([0=>'否',1=>'是']);
                 $filter->like('name','参会人员');
                 $filter->like('code','客户编码');
                 $filter->like('hotel','入住酒店');
             });
             $grid->tools(function ($tools) {
                 $tools->append(new DelCard());
+                //$tools->append(new SendSms());
 
                 $tools->batch(function ($batch) {
                     $batch->add('批量报名', new BatchEnter(1));
+                    $batch->add('批量发送短信', new BatchSend(1));
                 });
             });
         });
@@ -141,6 +150,22 @@ class VusersController extends Controller
     {
         if ($request->ajax()) {
             DB::table('vusers')->update(['card' => '']);
+        }
+    }
+
+    public function sendSms(Request $request)
+    {
+        if ($request->ajax()) {
+
+            foreach (Vuser::find($request->get('ids')) as $vuser) {
+                $vuser->has_sms = $request->get('action');
+                $vuser->save();
+            }
+
+            return response()->json([
+                'errCode' => 0,
+                'msg' => 'success'
+            ]);
         }
     }
 }
