@@ -65,10 +65,10 @@ class EnterController extends Controller
                     ->count();
                 // 应签到人数 e
                 $box = new Box('统计', '
-<span>应到人数:</span><b>'.$should_vuser_count.'</b>
-<span>实到人数:</span><b>'.$sign_vuser_count['sign_count'].'</b><hr>
-<span>应到家数:</span><b>'.$should_vcat_count.'</b>
-<span>实到家数:</span><b>'.$sign_vcat_count.'</b>'
+<span>应到人数:</span><b id="should_vuser_count">'.$should_vuser_count.'</b>
+<span>实到人数:</span><b id="sign_vuser_count">'.$sign_vuser_count['sign_count'].'</b><hr>
+<span>应到家数:</span><b id="should_vcat_count">'.$should_vcat_count.'</b>
+<span>实到家数:</span><b id="sign_vcat_count">'.$sign_vcat_count.'</b>'
                 );
                 $content->row($box->style('primary'));
             }

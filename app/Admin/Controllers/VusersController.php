@@ -48,6 +48,7 @@ class VusersController extends Controller
                 return Province::find($province_id)->name;
             });
             $grid->name('参会人员')->editable();
+            $grid->gravatar('头像')->image('', 100, 100);
             $grid->post('职务')->editable();
             $grid->mobile('手机号')->editable();
             $grid->code('客户编码')->editable();
@@ -124,6 +125,7 @@ class VusersController extends Controller
             $form->select('vcat_id','类别')->options(Vcat::selectOptions())->rules('numeric|min:1');
             $form->select('province_id', '省')->options(Province::all()->where('parent_id', '>', 0)->pluck('name', 'id'));
             $form->text('name', '参会人员')->rules('required');
+            $form->image('gravatar','头像');
             $form->text('post', '职务')->rules('required');
             $form->text('mobile', '手机号')->rules('required');
             $form->text('code', '客户编码')->rules('required');
