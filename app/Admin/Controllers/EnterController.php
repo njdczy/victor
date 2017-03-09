@@ -13,7 +13,8 @@ use Encore\Admin\Layout\Row;
 use Encore\Admin\Grid;
 
 use Encore\Admin\Widgets\Box;
-
+use Encore\Admin\Widgets\Form;
+use Encore\Admin\Widgets\Table;
 use App\SignLog;
 use App\Conference;
 use App\Vuser;
@@ -40,10 +41,72 @@ class EnterController extends Controller
             if (!$this->id) {
 
             } else {
-                $content->row(function (Row $row) {
-                    $row->column(4, function (Column $column) {
-                    });
+                $token = csrf_token();
+                $table_html = <<<EOT
+<table class="table">
+    <thead>
+    <tr><td>光标放入输入框:</td><td><input id="input"/></td></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>照片:</td>
+            <td><img id="vuser_gravatar" style="width:100px;height:100px;" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"/></td>
+        </tr>
+        <tr>
+          <td>类别:<span id="vcat_one"></span></td>
+        </tr>
+        <tr>
+            <td>部门:<span id="vcat_two"></span></td>
+             <td>省:<span id="province_name"></span></td>
+        </tr>
+        <tr>
+          <td>参会人员:<span id="vuser_name"></span></td>
+          <td>客户名称:<span id="company_name"></span></td>
+        </tr>
+        <tr>
+            <td>业务人员:<span id="salesman_name"></span></td>
+            <td>签到时间:<span id="sign_time"></span></td>
+        </tr>
+        </tbody>
+</table>
+<script>
+var input = document.getElementById("input");
+
+input.addEventListener("keydown", function(e){
+         e = e||event;
+		 var keyCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+         if(keyCode==13){
+
+             e.preventDefault();
+			 if(input.value){
+			     $.ajax({
+                    method: 'post',
+                    url: 'sign',
+                    data: {
+                        _token:'{$token}',
+                        id: input.value,
+                        conference_id: {$this->id},
+                    },
+                    success: function (data) {
+                        if (data.error) {
+
+                            toastr.error(data.msg);
+
+                        } else {
+                           document.getElementById("vcat_two").innerText=data.vuser_info.vcat_two;
+                           toastr.success(data.msg);
+                        }
+
+                    }
                 });
+			 }
+        }
+});
+</script>
+EOT;
+                $box = new Box('签到人信息',$table_html);
+                $content->row($box->style('primary'));
+
                 //  应签到人数 s
                 $vcat_ids = DB::table('demo_taggables')
                     ->select('vcat_id')
@@ -66,7 +129,7 @@ class EnterController extends Controller
                 // 应签到人数 e
                 $box = new Box('统计', '
 <span>应到人数:</span><b id="should_vuser_count">'.$should_vuser_count.'</b>
-<span>实到人数:</span><b id="sign_vuser_count">'.$sign_vuser_count['sign_count'].'</b><hr>
+<span>实到人数:</span><b id="sign_vuser_count">'.$sign_vuser_count['sign_count'].'</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <span>应到家数:</span><b id="should_vcat_count">'.$should_vcat_count.'</b>
 <span>实到家数:</span><b id="sign_vcat_count">'.$sign_vcat_count.'</b>'
                 );

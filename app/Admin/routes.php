@@ -28,5 +28,7 @@ Route::group([
     $router->patch('del_card', 'VusersController@delCard');
     $router->post('vusers/send_sms', 'VusersController@sendSms');
 
+    $router->post('/sign', 'SignController@index');
+
     $router->get('/enter', 'Entercontroller@index');
 });
