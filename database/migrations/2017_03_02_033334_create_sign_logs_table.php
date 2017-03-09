@@ -18,7 +18,7 @@ class CreateSignLogsTable extends Migration
             $table->integer('vuser_id');
             $table->string('admin_user_name');
             $table->integer('conference_id');
-            $table->string('conference_name');
+            $table->string('conference_name')->nullable();
             $table->timestamps();
         });
     }

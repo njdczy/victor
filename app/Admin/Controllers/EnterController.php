@@ -88,14 +88,27 @@ input.addEventListener("keydown", function(e){
                         conference_id: {$this->id},
                     },
                     success: function (data) {
-                        if (data.error) {
+                        if (data.error > 0) {
 
                             toastr.error(data.msg);
 
                         } else {
+                           document.getElementById("vuser_gravatar").setAttribute('src',data.vuser_info.vuser_gravatar);
                            document.getElementById("vcat_two").innerText=data.vuser_info.vcat_two;
+                           document.getElementById("province_name").innerText=data.vuser_info.province_name;
+                           document.getElementById("vuser_name").innerText=data.vuser_info.vuser_name;
+                           document.getElementById("company_name").innerText=data.vuser_info.company_name;
+                           document.getElementById("salesman_name").innerText=data.vuser_info.salesman_name;
+
+                           document.getElementById("sign_vuser_count").innerText=data.sign_info.sign_vuser_count;
+                           document.getElementById("sign_vcat_count").innerText=data.sign_info.sign_vcat_count;
+
+
                            toastr.success(data.msg);
                         }
+
+                        input.value = '';
+                        input.focus();
 
                     }
                 });
