@@ -22,6 +22,7 @@ use App\Salesman;
 use App\Manager;
 use App\Province;
 use App\Hotel;
+use App\Post;
 use Illuminate\Support\Facades\DB;
 
 class VusersController extends Controller
@@ -41,7 +42,12 @@ class VusersController extends Controller
     {
         return Vuser::grid(function (Grid $grid) {
             $grid->model()->orderBy('created_at','desc');
-            $grid->vcat_id('类别')->display(function($vcat_id){
+            $grid->number('编号');
+            $grid->column('type','类别')->display(function(){
+                $prrent_id = Vcat::find($this->vcat_id)->parent_id;
+                return Vcat::find($prrent_id)->title;
+            });
+            $grid->vcat_id('部门')->display(function($vcat_id){
                 return Vcat::find($vcat_id)->title;
             });
             $grid->province_id('省')->display(function($province_id){
@@ -49,7 +55,9 @@ class VusersController extends Controller
             });
             $grid->name('参会人员')->editable();
             $grid->gravatar('头像')->image('', 100, 100);
-            $grid->post('职务')->editable();
+            $grid->post_id('职务')->display(function($post_id) {
+                return Post::find($post_id)->name;
+            });
             $grid->mobile('手机号')->editable();
             $grid->code('客户编码')->editable();
             $grid->card('卡号')->editable();
@@ -59,7 +67,8 @@ class VusersController extends Controller
             $grid->regional_manager_id('区域经理')->display(function($regional_manager_id) {
                 return Manager::find($regional_manager_id)->name;
             });
-            $grid->hotel('入住酒店')->editable();
+            $grid->company('客户单位')->editable();
+            //$grid->hotel('入住酒店')->editable();
             $states = [
                 'on' => ['text' => '是'],
                 'off' => ['text' => '否'],
@@ -126,7 +135,7 @@ class VusersController extends Controller
             $form->select('province_id', '省')->options(Province::all()->where('parent_id', '>', 0)->pluck('name', 'id'));
             $form->text('name', '参会人员')->rules('required');
             $form->image('gravatar','头像');
-            $form->text('post', '职务')->rules('required');
+            $form->select('post_id', '职务')->options(Post::all()->pluck('name', 'id'));
             $form->text('mobile', '手机号')->rules('required');
             $form->text('code', '客户编码')->rules('required');
             $form->text('card', '卡号')->rules('required');

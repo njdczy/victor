@@ -13,15 +13,15 @@ use Encore\Admin\Grid;
 
 use Encore\Admin\Controllers\ModelForm;
 
-use App\Manager;
-class ManagersController extends Controller
+use App\Post;;
+
+class PostsController extends Controller
 {
     use ModelForm;
-
     public function index()
     {
         return Admin::content(function (Content $content)  {
-            $content->header('区域经理');
+            $content->header('职务');
             $content->description('列表');
             $content->row(function (Row $row) {
                 $row->column(2, function (Column $column)  {});
@@ -36,9 +36,9 @@ class ManagersController extends Controller
 
     protected function grid()
     {
-        return Admin::grid(Manager::class, function (Grid $grid)  {
+        return Admin::grid(Post::class, function (Grid $grid)  {
 
-            $grid->name('区域经理名称');
+            $grid->name('职务名称');
             $grid->paginate(10);
             $grid->disableExport();
             $grid->disableBatchDeletion();
@@ -59,7 +59,7 @@ class ManagersController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-            $content->header('区域经理');
+            $content->header('职务');
             $content->description('添加');
             $content->body($this->form());
         });
@@ -67,8 +67,8 @@ class ManagersController extends Controller
 
     protected function form()
     {
-        return Manager::form(function (Form $form) {
-            $form->text('name', '区域经理名称')->rules('required');
+        return Post::form(function (Form $form) {
+            $form->text('name', '职务名称')->rules('required');
         });
     }
 }

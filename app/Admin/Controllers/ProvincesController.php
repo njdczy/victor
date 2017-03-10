@@ -11,10 +11,14 @@ use Encore\Admin\Layout\Row;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 
+use Encore\Admin\Controllers\ModelForm;
+
 use App\Province;
 
 class ProvincesController extends Controller
 {
+    use ModelForm;
+
     public function index()
     {
         return Admin::content(function (Content $content)  {

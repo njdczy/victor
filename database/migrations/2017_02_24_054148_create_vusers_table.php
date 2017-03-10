@@ -15,10 +15,11 @@ class CreateVusersTable extends Migration
     {
         Schema::create('vusers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('number')->nullable();
             $table->unsignedSmallInteger('vcat_id')->index();
             $table->unsignedSmallInteger('province_id');
             $table->string('name');
-            $table->string('post');
+            $table->unsignedSmallInteger('post_id');
             $table->string('mobile',11)->unique();
             $table->string('code',30);
             $table->string('card');

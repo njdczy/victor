@@ -11,10 +11,13 @@ use Encore\Admin\Layout\Row;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 
+use Encore\Admin\Controllers\ModelForm;
+
 use App\Hotel;
 
 class HotelsController extends Controller
 {
+    use ModelForm;
     public function index()
     {
         return Admin::content(function (Content $content)  {
