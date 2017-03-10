@@ -1,0 +1,49 @@
+.onepage {
+  height: 100%;
+}
+
+.bus {
+  position: relative;
+  min-height: 100%;
+  overflow: auto;
+  background-color: #ececec;
+}
+
+.bus .header-box {
+  height: 100px;
+  width: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../../images/hotel-bg.jpg");
+}
+
+.bus .content {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  padding: 5px 10px;
+  min-height: 100%;
+  overflow: auto;
+}
+
+.bus .content h2 {
+  margin: 0;
+  color: #ed6e00;
+}
+
+.bus .content h2 svg {
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+.bus .content span {
+  display: inline-block;
+  vertical-align: text-bottom;
+  line-height: 25px;
+}
+
+.bus table {
+  width: 100%;
+  text-align: center;
+}
