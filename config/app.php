@@ -168,6 +168,8 @@ return [
          */
         Encore\Admin\Providers\AdminServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         //
 
         /*
@@ -229,6 +231,7 @@ return [
 
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

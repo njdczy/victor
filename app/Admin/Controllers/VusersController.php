@@ -25,6 +25,8 @@ use App\Hotel;
 use App\Post;
 use Illuminate\Support\Facades\DB;
 
+use App\Admin\Extensions\CustomExporter;
+
 class VusersController extends Controller
 {
     use ModelForm;
@@ -98,9 +100,9 @@ class VusersController extends Controller
                 $filter->like('code','客户编码');
                 $filter->like('hotel','入住酒店');
             });
+            $grid->exporter(new CustomExporter());
             $grid->tools(function ($tools) {
                 $tools->append(new DelCard());
-                //$tools->append(new SendSms());
 
                 $tools->batch(function ($batch) {
                     $batch->add('批量报名', new BatchEnter(1));
