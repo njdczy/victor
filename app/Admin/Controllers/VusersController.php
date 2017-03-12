@@ -44,7 +44,8 @@ class VusersController extends Controller
     {
         return Vuser::grid(function (Grid $grid) {
             $grid->model()->orderBy('created_at','desc');
-            $grid->number('编号');
+            $grid->number('参会人员编号');
+            $grid->card('卡片号码')->editable();
             $grid->column('type','类别')->display(function(){
                 $prrent_id = Vcat::find($this->vcat_id)->parent_id;
                 return Vcat::find($prrent_id)->title;
@@ -62,15 +63,10 @@ class VusersController extends Controller
             });
             $grid->mobile('手机号')->editable();
             $grid->code('客户编码')->editable();
-            $grid->card('卡号')->editable();
-            $grid->salesman_id('业务员')->display(function($salesman_id) {
-                return Salesman::find($salesman_id)->name;
+            $grid->company('客户')->editable();
+            $grid->hotel('业务员')->display(function($hotel) {
+                return Hotel::find($hotel)->name;
             });
-            $grid->regional_manager_id('区域经理')->display(function($regional_manager_id) {
-                return Manager::find($regional_manager_id)->name;
-            });
-            $grid->company('客户单位')->editable();
-            //$grid->hotel('入住酒店')->editable();
             $states = [
                 'on' => ['text' => '是'],
                 'off' => ['text' => '否'],
@@ -78,6 +74,14 @@ class VusersController extends Controller
             $grid->column('switch_group','是否')->switchGroup([
                 'has_attend' => '参加过订货会', 'is_need_sms' => '推送短信', 'is_enter' => '已报名'
             ], $states);
+
+            $grid->salesman_id('业务员')->display(function($salesman_id) {
+                return Salesman::find($salesman_id)->name;
+            });
+            $grid->regional_manager_id('区域经理')->display(function($regional_manager_id) {
+                return Manager::find($regional_manager_id)->name;
+            });
+
 
             $grid->has_sms('已发送短信')->display(function() {
                 return $this->has_sms? '是':'否';
@@ -134,7 +138,7 @@ class VusersController extends Controller
     {
         return Vuser::form(function (Form $form) {
             $form->select('vcat_id','类别')->options(Vcat::selectOptions())->rules('numeric|min:1');
-            $form->select('province_id', '省')->options(Province::all()->where('parent_id', '>', 0)->pluck('name', 'id'));
+            $form->select('province_id', '省')->options(Province::all()->pluck('name', 'id'));
             $form->text('name', '参会人员')->rules('required');
             $form->image('gravatar','头像');
             $form->select('post_id', '职务')->options(Post::all()->pluck('name', 'id'));

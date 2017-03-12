@@ -2,6 +2,12 @@
 
 namespace App\Admin\Extensions;
 
+use App\Hotel;
+use App\Manager;
+use App\Post;
+use App\Province;
+use App\Salesman;
+use App\Vcat;
 use Encore\Admin\Grid\Exporters\AbstractExporter;
 use Maatwebsite\Excel\Facades\Excel;
 /**
@@ -12,11 +18,47 @@ use Maatwebsite\Excel\Facades\Excel;
  */
 class CustomExporter extends AbstractExporter
 {
+    private $en_to_cn = [
+        "vcat_id" => '',
+        "province_id" => 37,
+        "name" => "jupton",
+        "post_id" => 1,
+        "mobile" => "14398725601",
+        "code" => "81432675",
+        "card" => "72518436",
+        "company" => "Veum-Weissnat",
+        "has_attend" => 0,
+        "salesman_id" => 1,
+        "regional_manager_id" => 3,
+        "is_need_sms" => 1,
+        "has_sms" => 0,
+        "is_enter" => 0,
+        "is_sign" => 0,
+        "hotel" => "Braun, Pollich and Baumbach",
+        "gravatar" => null,
+        "deleted_at" => null,
+        "created_at" => "2017-03-10 05:41:21",
+        "updated_at" => "2017-03-10 05:41:21",
+    ];
     public function export()
     {
         $filename = $this->getTable().'.csv';
 
-        dump($this->getData());
+        $data = $this->getData();
+        $vcat_id_array = array_unique(array_column($data, 'vcat_id'));
+        $province_id_array = array_unique(array_column($data, 'province_id'));
+        $post_id_array = array_unique(array_column($data, 'post_id'));
+        $salesman_id_array = array_unique(array_column($data, 'salesman_id'));
+        $regional_manager_id_array = array_unique(array_column($data, 'regional_manager_id'));
+        $hotel_id_array = array_unique(array_column($data, 'hotel'));
+
+        $vcat_values_array = Vcat::whereIn('id',$vcat_id_array)->pluck('title','id')->all();
+        $province_values_array = Province::whereIn('id',$province_id_array)->pluck('name','id')->all();
+        $post_values_array = Post::whereIn('id',$post_id_array)->pluck('name','id')->all();
+        $salesman_values_array = Salesman::whereIn('id',$salesman_id_array)->pluck('name','id')->all();
+        $manager_values_array = Manager::whereIn('id',$regional_manager_id_array)->pluck('name','id')->all();
+        $hotel_values_array = Hotel::whereIn('id',$hotel_id_array)->pluck('name','id')->all();
+
         // 这里获取数据
         //dd($this->getData());
 
