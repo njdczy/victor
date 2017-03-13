@@ -53,7 +53,7 @@ class EnterController extends Controller
             <td><img id="vuser_gravatar" style="width:100px;height:100px;" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"/></td>
         </tr>
         <tr>
-          <td>类别:<span id="vcat_one"></span></td>
+          <!--<td>类别:<span id="vcat_one"></span></td>-->
         </tr>
         <tr>
             <td>部门:<span id="vcat_two"></span></td>
@@ -84,7 +84,7 @@ input.addEventListener("keydown", function(e){
                     url: 'sign',
                     data: {
                         _token:'{$token}',
-                        id: input.value,
+                        card: input.value,
                         conference_id: {$this->id},
                     },
                     success: function (data) {
@@ -93,7 +93,7 @@ input.addEventListener("keydown", function(e){
                             toastr.error(data.msg);
 
                         } else {
-                           document.getElementById("vuser_gravatar").setAttribute('src',data.vuser_info.vuser_gravatar);
+                           document.getElementById("vuser_gravatar").setAttribute('src','http://v.xhbuy.cn/upload/'+data.vuser_info.vuser_gravatar);
                            document.getElementById("vcat_two").innerText=data.vuser_info.vcat_two;
                            document.getElementById("province_name").innerText=data.vuser_info.province_name;
                            document.getElementById("vuser_name").innerText=data.vuser_info.vuser_name;

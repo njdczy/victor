@@ -7,7 +7,8 @@ use App\Vuser;
 use App\Conference;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use DB;
+use Carbon\Carbon;
 
 use Encore\Admin\Facades\Admin;
 
@@ -16,7 +17,7 @@ class SignController extends Controller
     public function index(Request $request)
     {
         $conference_id = $request->get('conference_id');
-        $vuser = Vuser::find($request->get('id'));
+        $vuser = Vuser::where('card','=',$request->get('card'))->first();
         if (isset($vuser->id)) {
             $res = DB::table('demo_taggables')
                 ->select('vcat_id')
@@ -47,7 +48,7 @@ class SignController extends Controller
                     'vuser_name' => $vuser->name,
                     'company_name' => $vuser->company,
                     'salesman_name' => $salesman[0],
-                    //'sign_time' => $vuser->gravatar,
+                    'sign_time' => Carbon::now()->toDateTimeString(),
                 ];
                 $sign_log = SignLog::where('vuser_id','=',$vuser->id)->first();
 

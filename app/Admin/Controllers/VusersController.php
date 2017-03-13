@@ -54,7 +54,7 @@ class VusersController extends Controller
                 return Vcat::find($vcat_id)->title;
             });
             $grid->province_id('省')->display(function($province_id){
-                return Province::find($province_id)->name;
+                return $province_id?Province::find($province_id)->name:'';
             });
             $grid->name('参会人员')->editable();
             $grid->gravatar('头像')->image('', 100, 100);
@@ -76,10 +76,10 @@ class VusersController extends Controller
             ], $states);
 
             $grid->salesman_id('业务员')->display(function($salesman_id) {
-                return Salesman::find($salesman_id)->name;
+                return $salesman_id?Salesman::find($salesman_id)->name:'';
             });
             $grid->regional_manager_id('区域经理')->display(function($regional_manager_id) {
-                return Manager::find($regional_manager_id)->name;
+                return $regional_manager_id?Manager::find($regional_manager_id)->name:'';
             });
 
 
@@ -137,21 +137,38 @@ class VusersController extends Controller
     public function form()
     {
         return Vuser::form(function (Form $form) {
+
+            $province_arr = Province::all()->pluck('name', 'id')->toArray();
+            $post_arr = Post::all()->pluck('name', 'id')->toArray();
+            $salesman_arr = Salesman::all()->pluck('name', 'id')->toArray();
+            $manager_arr = Manager::all()->pluck('name', 'id')->toArray();
+            $hotel_arr = Hotel::all()->pluck('name', 'id')->toArray();
+
+            $province_arr[0] = '';
+            ksort($province_arr);
+            $post_arr[0] = '';
+            ksort($post_arr);
+            $salesman_arr[0] = '';
+            ksort($salesman_arr);
+            $manager_arr[0] = '';
+            ksort($manager_arr);
+            $hotel_arr[0] = '';
+            ksort($hotel_arr);
             $form->select('vcat_id','类别')->options(Vcat::selectOptions())->rules('numeric|min:1');
-            $form->select('province_id', '省')->options(Province::all()->pluck('name', 'id'));
+            $form->select('province_id', '省')->options($province_arr);
             $form->text('name', '参会人员')->rules('required');
             $form->image('gravatar','头像');
-            $form->select('post_id', '职务')->options(Post::all()->pluck('name', 'id'));
+            $form->select('post_id', '职务')->options($post_arr);
             $form->text('mobile', '手机号')->rules('required');
             $form->text('code', '客户编码')->rules('required');
             $form->text('card', '卡号')->rules('required');
-            $form->select('salesman_id', '业务员')->options(Salesman::all()->pluck('name', 'id'));
+            $form->select('salesman_id', '业务员')->options($salesman_arr);
             $form->switch('has_attend','参加过订货会');
             $form->switch('is_need_sms','推送短信');
             $form->switch('is_enter','报名');
-            $form->select('regional_manager_id', '区域经理')->options(Manager::all()->pluck('name', 'id'));
+            $form->select('regional_manager_id', '区域经理')->options($manager_arr);
             $form->text('company', '客户单位')->rules('required');
-            $form->select('hotel', '入住酒店')->options(Hotel::all()->pluck('name', 'id'));
+            $form->select('hotel', '入住酒店')->options($hotel_arr);
         });
     }
 

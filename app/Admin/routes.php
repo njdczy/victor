@@ -32,4 +32,5 @@ Route::group([
     $router->post('/sign', 'SignController@index');
 
     $router->get('/enter', 'Entercontroller@index');
+    $router->get('/import', 'HomeController@import');
 });
