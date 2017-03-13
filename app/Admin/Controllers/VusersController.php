@@ -64,7 +64,7 @@ class VusersController extends Controller
             $grid->mobile('手机号')->editable();
             $grid->code('客户编码')->editable();
             $grid->company('客户')->editable();
-            $grid->hotel('业务员')->display(function($hotel) {
+            $grid->hotel('入住饭店')->display(function($hotel) {
                 return Hotel::find($hotel)->name;
             });
             $states = [
