@@ -157,7 +157,7 @@ class VusersController extends Controller
             $form->select('vcat_id','类别')->options(Vcat::selectOptions())->rules('numeric|min:1');
             $form->select('province_id', '省')->options($province_arr);
             $form->text('name', '参会人员')->rules('required');
-            $form->image('gravatar','头像')->move('',microtime().".jpg");
+            $form->image('gravatar','头像')->move('',microtime().rand(0000,9999).".jpg");
             $form->select('post_id', '职务')->options($post_arr);
             $form->text('mobile', '手机号')->rules('required');
             $form->text('code', '客户编码');
