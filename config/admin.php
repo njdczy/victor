@@ -52,7 +52,7 @@ return [
             'file'   => 'file',
         ],
 
-        'host' => public_path(). '/upload/',
+        'host' =>  'http://v.xhbuy.cn/upload/',
     ],
 
     /*
