@@ -160,14 +160,14 @@ class VusersController extends Controller
             $form->image('gravatar','头像');
             $form->select('post_id', '职务')->options($post_arr);
             $form->text('mobile', '手机号')->rules('required');
-            $form->text('code', '客户编码')->rules('required');
-            $form->text('card', '卡号')->rules('required');
+            $form->text('code', '客户编码');
+            $form->text('card', '卡号');
             $form->select('salesman_id', '业务员')->options($salesman_arr);
             $form->switch('has_attend','参加过订货会');
             $form->switch('is_need_sms','推送短信');
             $form->switch('is_enter','报名');
             $form->select('regional_manager_id', '区域经理')->options($manager_arr);
-            $form->text('company', '客户单位')->rules('required');
+            $form->text('company', '客户单位');
             $form->select('hotel', '入住酒店')->options($hotel_arr);
         });
     }
