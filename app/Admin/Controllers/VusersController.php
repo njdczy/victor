@@ -43,7 +43,7 @@ class VusersController extends Controller
     private function grid()
     {
         return Vuser::grid(function (Grid $grid) {
-            $grid->model()->orderBy('created_at','desc');
+            $grid->model()->orderBy('number','asc');
             $grid->number('参会人员编号');
             $grid->card('卡片号码')->editable();
             $grid->column('type','类别')->display(function(){
@@ -65,7 +65,7 @@ class VusersController extends Controller
             $grid->code('客户编码')->editable();
             $grid->company('客户')->editable();
             $grid->hotel('入住饭店')->display(function($hotel) {
-                return Hotel::find($hotel)->name;
+                return $hotel?Hotel::find($hotel)->name:'';
             });
             $states = [
                 'on' => ['text' => '是'],
