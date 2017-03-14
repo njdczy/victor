@@ -48,7 +48,7 @@ class VusersController extends Controller
             $grid->card('卡片号码')->editable();
             $grid->column('type','类别')->display(function(){
                 $prrent_id = Vcat::find($this->vcat_id)->parent_id;
-                return Vcat::find($prrent_id)->title;
+                return $prrent_id?Vcat::find($prrent_id)->title:'';
             });
             $grid->vcat_id('部门')->display(function($vcat_id){
                 return Vcat::find($vcat_id)->title;
