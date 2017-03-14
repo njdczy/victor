@@ -190,16 +190,28 @@ class VusersController extends Controller
     public function sendSms(Request $request)
     {
         if ($request->ajax()) {
-
+            $flag = 1;
+            //短信接口地址
+            $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
             foreach (Vuser::find($request->get('ids')) as $vuser) {
-                $vuser->has_sms = $request->get('action');
-                $vuser->save();
+                if ($vuser->is_need_sms && $vuser->mobile) {
+                    $post_data = "account=C12631375&password=8156172ac4908193056621448e70d33a&mobile=".$vuser->mobile."&content=".
+                        rawurlencode("您的验证码是：".'1234'."。请不要把验证码泄露给其他人。");
+
+                    $responses =  xml_to_array(post($post_data, $target));
+                    if($responses['code']==2){
+                        $vuser->has_sms = $request->get('action');
+                        $vuser->save();
+                        $flag = 0;
+                    }
+                }
             }
 
             return response()->json([
-                'errCode' => 0,
-                'msg' => 'success'
+                'errCode' => $flag,
+                'response' => $responses
             ]);
+
         }
     }
 }

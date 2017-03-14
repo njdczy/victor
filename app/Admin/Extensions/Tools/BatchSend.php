@@ -36,9 +36,14 @@ $('{$this->getElementClass()}').on('click', function() {
         beforeSend: function(){
             toastr.warning('随着发送人数增多，发送需要一段时间，不要关闭网页');
         },
-        success: function () {
+        success: function (data) {
+            if (data.errCode == 1) {
+                 toastr.error('发送失败');
+            }else{
+                toastr.success('发送成功');
+            }
             $.pjax.reload('#pjax-container');
-            toastr.success('操作成功');
+
         }
     });
 });

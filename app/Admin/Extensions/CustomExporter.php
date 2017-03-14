@@ -26,6 +26,7 @@ class CustomExporter extends AbstractExporter
         '类别',
         '部门',
         '省',
+        '职务',
         '参会人员',
         '手机号',
         '客户编码',
