@@ -59,7 +59,7 @@ class VusersController extends Controller
             $grid->name('参会人员')->editable();
             $grid->gravatar('头像')->image('', 100, 100);
             $grid->post_id('职务')->display(function($post_id) {
-                return Post::find($post_id)->name;
+                return $post_id?Post::find($post_id)->name:'';
             });
             $grid->mobile('手机号')->editable();
             $grid->code('客户编码')->editable();
