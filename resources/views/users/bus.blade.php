@@ -8,7 +8,7 @@
 <div class="car-times"></div>
 <p>金陵江滨酒店班车时刻表</p>
 <div class="tabel">
-    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;margin-left: 5px;">
+    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
         <col width="60" />
         <col width="140" />
         <col width="100" />
@@ -61,7 +61,7 @@
 </div>
 <p>粤海酒店班车时刻表</p>
 <div class="tabel">
-    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;margin-left: 5px;">
+    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
         <col width="60" />
         <col width="140" />
         <col width="100" />
@@ -109,7 +109,7 @@
 </div>
 <p>青年会议酒店班车时刻表</p>
 <div class="tabel">
-    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;margin-left: 1px;">
+    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
         <col width="50" />
         <col width="50" />
         <col width="110" />
@@ -177,7 +177,7 @@
 </div>
 <p>博览中心班车时刻表</p>
 <div class="tabel">
-    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;margin-left: 5px;">
+    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
         <col width="60" />
         <col width="140" />
         <col width="100" />

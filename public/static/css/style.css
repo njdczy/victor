@@ -127,8 +127,8 @@
 				position: relative;
 			}
 			.bg_four .head{
-				width: 30%;
-				height: 30%;
+				width: 36%;
+				height: 36%;
 				background-size: cover;
 				border-radius: 50%;
 				position: absolute;
@@ -139,7 +139,7 @@
 				font-size: 0.18rem;
 				text-align: center;
 				font-family:"方正黑体简体" ;
-				margin-top:54% ;
+				margin-top:61% ;
 			}
 			.bg_four h3{
 				font-size: 0.165rem;
@@ -348,10 +348,13 @@
 			
 			/*7*/
 			.top_seven{
+				box-sizing: border-box;
 				width: 100%;
-				height: 35%;
+				height: auto;
+				min-height: 35%;
 				background: url(../img/7-top.jpg)0 0 no-repeat;
-				background-size: 100% 100%;
+				background-size:contain;
+				padding:5% 0;
 				overflow: hidden;
 			}
 			.top_seven h2{
@@ -465,6 +468,9 @@
 			.footer_seven table tr td{
 				font-size: 0.10rem;
 				font-weight: normal;
+			}
+			.footer_seven table tr #times{
+				white-space: nowrap;
 			}
 			@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) {
 				.content:after{
