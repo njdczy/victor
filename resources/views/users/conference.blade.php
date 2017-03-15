@@ -2,7 +2,7 @@
     <body style="overflow-x: hidden;overflow-y: auto;">
     <script src="/static/js/common.js"></script>
     <div class="top_seven">
-
+        <img src="/static/img/logo.jpg" class="logo" alt="">
         <h2>2017 VICTOR品牌大會</h2>
         <h3>暨秋冬新品發布會</h3>
     </div>
