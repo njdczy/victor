@@ -3,7 +3,7 @@
     <script src="/static/js/common.js" ></script>
     <!--人物信息-->
     <div class="bg_four">
-        <div class="head" style="background: url(http://v.xhbuy.cn/{{$user->gravatar}}) 0 0 no-repeat;background-size: cover;">
+        <div class="head" style="background: url(http://v.xhbuy.cn/upload/{{$user->gravatar}}) 0 0 no-repeat;background-size: cover;">
 
         </div>
         <p>{{$user->name}}</p>
