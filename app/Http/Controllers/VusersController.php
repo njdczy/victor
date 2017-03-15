@@ -2,12 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Hotel;
 use Illuminate\Http\Request;
+use Auth;
 
 class VusersController extends Controller
 {
-    public function index(Request $request)
+
+    public function __construct()
     {
-        return view('users/index');
+        $this->middleware('auth');
     }
+
+    public function index()
+    {
+        $user = Auth::user();
+        return view('users/index',compact('user'));
+    }
+
+    public function hotel()
+    {
+        $hotel_id = Auth::user()->hotel;
+        $hotel = Hotel::find($hotel_id);
+        return view('users/hotel',compact('hotel'));
+    }
+
+
 }

@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Auth::provider('home-eloquent', function ($app, $config) {
+            return new \App\Foundation\Auth\HomeEloquentUserProvider($app['hash'], $config['model']);
+        });
     }
 
     /**

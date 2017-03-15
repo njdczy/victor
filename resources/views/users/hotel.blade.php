@@ -1,101 +1,123 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans" class="onepage">
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-    <meta content="telephone=no" name="format-detection"/>
-    <meta content="address=no" name="format-detection"/>
-    <meta name="apple-mobile-web-app-capable" content="no" />
+@include('public.header')
+    <body>
+    <script src="/static/js/common.js"></script>
+    <div class="contain_five">
+        <div class="pos_1 position on"></div>
+        <div class="pos_2 position"></div>
+        <div class="pos_3 position"></div>
+        <img src="/static/img/top-hotel.jpg"/>
+        <p><i></i><span>会场与酒店信息</span></p>
 
-    <title>YONEX-尤里克斯</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="HOMOLO">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-
-    <link rel="apple-touch-icon-precomposed" href="" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="" />
-    <link rel="stylesheet" type="text/css" href="/static/html/hotel/hotel.css" />
-    <link rel="stylesheet" href="/static/css/common.css" />
-    <link rel="stylesheet" href="/static/css/swiper.css" />
-</head>
-<body class="onepage">
-
-<div class="hotel">
-    <div class="header-box"></div>
-    <div class="content">
-        <h2>
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-hotel"></use>
-            </svg>
-            <span>会场与酒店信息</span>
-        </h2>
-        <div id="map"></div>
-        <div class="msg-panel">
-            <div class="panel-header">
-                <span>主会场地点</span>
-            </div>
-            <div class="panel-content">
-                <p>南京国际博览会议中心</p>
-                <p>地址:南京建邺区金沙江西街9号</p>
-            </div>
-        </div>
-        <div class="msg-panel">
-            <div class="panel-header">
-                <span>主会场地点</span>
-            </div>
-            <div class="panel-content">
-                <p>南京国际博览会议中心</p>
-                <p>地址:南京建邺区金沙江西街9号</p>
-            </div>
-        </div>
-        <div class="msg-panel">
-            <div class="panel-header">
-                <span>主会场地点</span>
-            </div>
-            <div class="panel-content">
-                <p>南京国际博览会议中心</p>
-                <p>地址:南京建邺区金沙江西街9号</p>
-            </div>
-        </div>
-        <div class="msg-panel">
-            <div class="panel-header">
-                <span>主会场地点</span>
-            </div>
-            <div class="panel-content">
-                <p>南京国际博览会议中心</p>
-                <p>地址:南京建邺区金沙江西街9号</p>
-            </div>
-        </div>
+        <!--百度地图容器-->
+        <div id="dituContent_1" class="maps show"></div>
+        <div id="dituContent_2" class="maps"></div>
+        <div id="dituContent_3" class="maps"></div>
+        <div class="main">主会场地址</div>
+        <p class="main-pos">南京国际青年文化中心</p>
+        <p class="main-pos">南京建邺区金沙江西街9号</p>
+        <div class="cheer">欢迎晚宴</div>
+        <p class="cheer-pos">南京国际博览会议中心（金陵会议中心） 三楼钟山厅</p>
+        <p class="cheer-pos_1">地址：建邺区江东中路300号（近白龙江西街）</p>
+        <div class="hotel">经销商入住酒店</div>
+        <p class="main-pos">{{$hotel->name}}</p>
+        <p  class="hotel-pos">地址：
+            @if (strpos($hotel->name,'粤海国际酒店'))
+                建邺区江东中路363号
+            @elseif (strpos($hotel->name,'金陵江滨酒店'))
+                建邺区扬子江大道260号
+            @else
+                建邺区金沙江西街16号（国际博览中心南门）
+            @endif
+        </p>
     </div>
+    </body>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <!--地图1-->
+    <script type="text/javascript">
+        //创建和初始化地图函数：
+        function initMap(){
+            createMap();//创建地图
+            setMapEvent();//设置地图事件
+        }
 
-</div>
-<script src="/static/lib/mod.js"></script>
-<script>/*resourcemap*/
-</script>
-<script src="/static/lib/iconfont.js"></script>
-<script src="http://webapi.amap.com/maps?v=1.3&key=af0be466fd170e098a0b928be57c8d9d"></script>
-<script>
-    var map = new AMap.Map('map',{
-        resizeEnable: true,
-        zoom: 18,
-        resizeEnable: false,
-        dragEnable:false,
+        //创建地图函数：
+        function createMap(){
+            var map = new BMap.Map("dituContent_1");//在百度地图容器中创建一个地图
+            var point = new BMap.Point(118.714877,31.996774);//定义一个中心点坐标
+            map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中
+            window.map = map;//将map变量存储在全局
+        }
 
-        center: [118.706905,31.991327],
-    });
-    new AMap.Marker({
-        map: map,
-        position: [118.706905,31.991327],
-        icon: new AMap.Icon({
-            size: new AMap.Size(40, 50),  //图标大小
-            image: "http://webapi.amap.com/theme/v1.3/images/newpc/way_btn2.png",
-            imageOffset: new AMap.Pixel(0, -60)
+        //地图事件设置函数：
+        function setMapEvent(){
+            map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+            map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+            map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+            map.enableKeyboard();//启用键盘上下左右键移动地图
+        }
+
+        initMap();//创建和初始化地图
+    </script>
+    <!--地图2-->
+    <script type="text/javascript">
+        //创建和初始化地图函数：
+        function initMap(){
+            createMap();//创建地图
+            setMapEvent();//设置地图事件
+        }
+
+        //创建地图函数：
+        function createMap(){
+            var map = new BMap.Map("dituContent_2");//在百度地图容器中创建一个地图
+            var point = new BMap.Point(118.721357,31.997904);//定义一个中心点坐标
+            map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中
+            window.map = map;//将map变量存储在全局
+        }
+
+        //地图事件设置函数：
+        function setMapEvent(){
+            map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+            map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+            map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+            map.enableKeyboard();//启用键盘上下左右键移动地图
+        }
+        initMap();//创建和初始化地图
+    </script>
+    <!--地图3-->
+    <script type="text/javascript">
+        //创建和初始化地图函数：
+        function initMap(){
+            createMap();//创建地图
+            setMapEvent();//设置地图事件
+        }
+
+        //创建地图函数：
+        function createMap(){
+            var map = new BMap.Map("dituContent_3");//在百度地图容器中创建一个地图
+            var point = new BMap.Point(118.718146,31.996958);//定义一个中心点坐标
+            map.centerAndZoom(point,19);//设定地图的中心点和坐标并将地图显示在地图容器中
+            window.map = map;//将map变量存储在全局
+        }
+
+        //地图事件设置函数：
+        function setMapEvent(){
+            map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+            map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+            map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+            map.enableKeyboard();//启用键盘上下左右键移动地图
+        }
+
+        initMap();//创建和初始化地图
+    </script>
+    <!--地图切换-->
+    <script type="text/javascript">
+        $(function(){
+            $(".position").click(function(){
+                $(this).addClass("on").siblings().removeClass("on");
+                var index=$(this).index();
+                $(".maps").eq(index).addClass("show").siblings().removeClass("show");
+            })
         })
-    });
-
-    // var main = require('js/main');
-    // main.Slide.init();
-</script>
-</body>
+    </script>
 </html>

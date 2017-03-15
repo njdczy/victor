@@ -92,26 +92,29 @@
 			
 			}
 			.input_three{
-				width:2.6rem ;
+				width:2rem ;
 				height: 0.36rem;
 				text-align: center;
 				margin: auto;
 				border-top: 1px solid #221816;
 				border-bottom: 1px solid #221816;
+				padding-left:1rem;
 				margin-top: 0.3rem;
 			}
-			#button_three a{
+			#button_three button{
 				width:1.6rem;
 				height: 0.42rem;
 				text-align: center;
 				line-height: 0.42rem;
 				margin:.38rem auto;
 				display: block;
+				outline: none;
+				border: none;
 				background-color: #093389;
 				color: white;
 				font-size: .16rem;	 		
 			}
-			#button_three a:active{
+			#button_three button:active{
 				background-color:#052059 ;
 			}
 			/*four为4-app样式*/
@@ -126,7 +129,6 @@
 			.bg_four .head{
 				width: 30%;
 				height: 30%;
-				background: url(../img/head.png) 0 0 no-repeat;
 				background-size: cover;
 				border-radius: 50%;
 				position: absolute;
@@ -228,7 +230,7 @@
     			
     		}
     		.main{
-    			width: 15%;
+    			width: 25%;
     			height: 4%;
     			background: #083388;
     			font-size: 0.14rem;
@@ -484,15 +486,15 @@
 				overflow: hidden;
 			}
 			.top_eight h2{
-				font-size: 0.23rem;
+				/*font-size: 0.23rem;*/
 				text-align: center;
-				margin-top: 0.7rem;
+				margin-top: 5.7rem;
 				font-family: "微软雅黑";
 				font-weight: bold;
 				letter-spacing: 0.02rem;
 			}
 			.top_eight h3{
-				font-size: 0.18rem;
+				/*font-size: 0.18rem;*/
 				text-align: center;
 				font-family: "微软雅黑";
 				font-weight: bold;
@@ -548,6 +550,6 @@
     		.seat{
     			width: 100%;
     			height: 100%;
-    			background: url(../img/9-seat.jpg) 0 0 no-repeat;
+    			background: url(../img/seat.jpg) 0 0 no-repeat;
     			background-size: 100% 100%;
     		}

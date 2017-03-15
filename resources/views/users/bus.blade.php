@@ -1,88 +1,248 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans" class="onepage">
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-    <meta content="telephone=no" name="format-detection"/>
-    <meta content="address=no" name="format-detection"/>
-    <meta name="apple-mobile-web-app-capable" content="no" />
-
-    <title>YONEX-尤里克斯</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="HOMOLO">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-
-    <link rel="apple-touch-icon-precomposed" href="" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="" />
-    <link rel="stylesheet" type="text/css" href="/static/html/bus/bus.css" />
-    <link rel="stylesheet" href="/static/css/common.css" />
-    <link rel="stylesheet" href="/static/css/swiper.css" />
-</head>
-<body class="onepage">
-
-<div class="bus">
-    <div class="header-box"></div>
-    <div class="content">
-        <h2>
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-bus"></use>
-            </svg>
-            <span>会场与酒店信息</span>
-        </h2>
-        <table border="1">
-            <tbody>
-            <tr>
-                <th width="18%">日期</th>
-                <th width="15%">班车</th>
-                <th>时间</th>
-                <th>登车地址</th>
-                <th>目的地</th>
-            </tr>
-            <tr>
-                <td rowspan="4">9月21日</td>
-                <td  rowspan="2">班车1</td>
-                <td>10:00 11:00 12:00</td>
-                <td>地铁2号线、10号线</td>
-                <td>博览中心酒店</td>
-            </tr>
-            <tr>
-                <td>10:00 11:00 12:00</td>
-                <td>地铁2号线、10号线</td>
-                <td>博览中心酒店</td>
-            </tr>
-            <tr>
-                <td>班车2</td>
-                <td>10:00 11:00 12:00</td>
-                <td>地铁2号线、10号线</td>
-                <td>博览中心酒店</td>
-            </tr>
-            <tr>
-                <td>班车3</td>
-                <td>10:00 11:00 12:00</td>
-                <td>地铁2号线、10号线</td>
-                <td>博览中心酒店</td>
-            </tr>
-
-            <tr>
-                <td rowspan="3">9月22日</td>
-                <td  rowspan="2">班车1</td>
-                <td>10:00 11:00 12:00</td>
-                <td>地铁2号线、10号线</td>
-                <td>博览中心酒店</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+@include('public.header')
+<body>
+<script src="js/common.js"></script>
+<div class="top_eight">
+    <h2>2017 VICTOR品牌大會</h2>
+    <h3>暨秋冬新品發布會</h3>
 </div>
-<script src="/static/lib/mod.js"></script>
-<script>/*resourcemap*/
-</script>
-<script src="/static/lib/iconfont.js"></script>
-<script>
+<div class="car-times"></div>
+<p>金陵江滨酒店班车时刻表</p>
+<div class="tabel">
+    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;margin-left: 5px;">
+        <col width="60" />
+        <col width="140" />
+        <col width="100" />
+        <col width="100" />
+        <tr>
+            <th>日期</th>
+            <th>时间</th>
+            <th>登车地址</th>
+            <th>目的地</th>
+        </tr>
+        <tr>
+            <th rowspan="2">3月20日</th>
+            <td width="100">13:00 14:00 15:00 16:00 17:00</td>
+            <td>金陵江滨酒店大门口</td>
+            <td>青年会议酒店南广场</td>
+        </tr>
+        <tr>
+            <td>20:30 21:00</td>
+            <td>博览会议中心停车场</td>
+            <td>博览中心酒店<br/>金陵江滨酒店</td>
+        </tr>
+        <tr>
+            <th rowspan="2">3月21日</th>
+            <td width="100">8:15 8:30 8:45<br/>13:00 15:00 17:00<br/>19:00</td>
+            <td>金陵江滨酒店大门口</td>
+            <td>青年会议酒店南广场</td>
+        </tr>
+        <tr>
+            <td>12:30 14:30 16:30<br/>18:30 19:30 20:30 <br/>21:30</td>
+            <td>青年会议酒店南广场</td>
+            <td>金陵江滨酒店大门口</td>
+        </tr>
+        <tr>
+            <th rowspan="3">3月22日</th>
+            <td width="100">8:20 8:50 9:20</td>
+            <td>金陵江滨酒店大门口</td>
+            <td>青年会议酒店南广场</td>
+        </tr>
+        <tr>
+            <td>10:00 11:00 12:00</td>
+            <td>青年会议酒店南广场</td>
+            <td>金陵江滨酒店大门口</td>
+        </tr>
+        <tr>
+            <td>13:00 14:00</td>
+            <td>青年会议酒店南广场</td>
+            <td>元通地铁站</td>
+        </tr>
+    </table>
+</div>
+<p>粤海酒店班车时刻表</p>
+<div class="tabel">
+    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;margin-left: 5px;">
+        <col width="60" />
+        <col width="140" />
+        <col width="100" />
+        <col width="100" />
+        <tr>
+            <th>日期</th>
+            <th>时间</th>
+            <th>登车地址</th>
+            <th>目的地</th>
+        </tr>
+        <tr>
+            <th rowspan="2">3月20日</th>
+            <td width="100">13:00 14:00 15:00 16:00</td>
+            <td>粤海酒店一楼停车场</td>
+            <td>青年会议酒店南广场</td>
+        </tr>
+        <tr>
+            <td>20:30 21:00</td>
+            <td>粤海酒店一楼停车场</td>
+            <td>青年会议酒店南广场</td>
+        </tr>
+        <tr>
+            <th rowspan="2">3月21日</th>
+            <td width="100">8:15 8:30 8:45 <br/>13:00 15:00 17:00 <br/>19:00</td>
+            <td>粤海酒店一楼停车场</td>
+            <td>青年会议酒店南广场</td>
+        </tr>
+        <tr>
+            <td>12:30 14:30 16:30 <br/>18:30 19:30 20:30 <br/>21:30</td>
+            <td>青年会议酒店南广场</td>
+            <td>粤海酒店一楼停车场</td>
+        </tr>
+        <tr>
+            <th rowspan="3">3月22日</th>
+            <td width="100">8:20 8:50 9:20</td>
+            <td>粤海酒店一楼停车场</td>
+            <td>青年会议酒店南广场</td>
+        </tr>
+        <tr>
+            <td>10:00 11:00 12:00</td>
+            <td>青年会议酒店南广场</td>
+            <td>粤海酒店一楼停车场</td>
+        </tr>
+    </table>
+</div>
+<p>青年会议酒店班车时刻表</p>
+<div class="tabel">
+    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;margin-left: 1px;">
+        <col width="50" />
+        <col width="50" />
+        <col width="110" />
+        <col width="100" />
+        <col width="100" />
+        <tr>
+            <th>日期</th>
+            <th>班车</th>
+            <th>时间</th>
+            <th>登车地址</th>
+            <th>目的地</th>
+        </tr>
+        <tr>
+            <th rowspan="2">3月20日</th>
+            <td>班车1</td>
+            <td>17:35 17:45 <br/>18:00 18:15</td>
+            <td>
+                青年会议酒店南广场
+                (订货会场)
+            </td>
+            <td>
+                青年会议酒店南广场
+                (订货会场)
+            </td>
+        </tr>
+        <tr>
+            <td>班车2</td>
+            <td>20:30 21:00</td>
+            <td>
+                青年会议酒店南广场
+                (订货会场)
+            </td>
+            <td>
+                青年会议酒店南广场
+                (订货会场)
+            </td>
+        </tr>
+        <tr>
+            <th rowspan="2">3月21日</th>
+            <td>班车1</td>
+            <td>8:15 8:30<br/>8:45 13:00  <br/>15:00 17:00 <br/>19:00</td>
+            <td>青年会议酒店南广场</td>
+            <td>粤海酒店</td>
+        </tr>
+        <tr>
+            <td>班车2</td>
+            <td>12:30 14:30 <br/> 16:30 18:30 <br/>19:30 20:30 <br/>21:30</td>
+            <td>青年会议酒店南广场</td>
+            <td>金陵江滨酒店南广场</td>
+        </tr>
+        <tr>
+            <th rowspan="3">3月22日</th>
+            <td>班车1</td>
+            <td>8:20  8:50<br/> 9:20</td>
+            <td>青年会议酒店南广场</td>
+            <td>粤海酒店</td>
+        </tr>
+        <tr>
+            <td>班车2</td>
+            <td>10:00 11:00  <br/>12:00</td>
+            <td>青年会议酒店南广场</td>
+            <td>金陵江滨酒店南广场</td>
+        </tr>
+    </table>
+</div>
+<p>博览中心班车时刻表</p>
+<div class="tabel">
+    <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;margin-left: 5px;">
+        <col width="60" />
+        <col width="140" />
+        <col width="100" />
+        <col width="100" />
+        <tr>
+            <th>日期</th>
+            <th>时间</th>
+            <th>登车地址</th>
+            <th>目的地</th>
+        </tr>
+        <tr>
+            <th rowspan="3">3月20日</th>
+            <td width="100">13:00 14:00 <br/>15:00 16:00</td>
+            <td>
+                粤海酒店一楼停车场
+                <span style="font-size: 0.10rem;">(靠近元通地铁站2号出口)</span>
+            </td>
+            <td>博览中心酒店</td>
+        </tr>
+        <tr>
+            <td>17:35 17:45 <br/>18:00 18:15</td>
+            <td>
+                青年会议酒店南广场
+                (订货会场)
+            </td>
+            <td>
+                博览会议中心停车场
+                (晚宴会场)
+            </td>
+        </tr>
+        <tr>
+            <td>20:30 21:00</td>
+            <td>
+                博览会议中心停车场
+                (晚宴会场)
+            </td>
+            <td>博览中心酒店</td>
+        </tr>
+        <tr>
+            <th rowspan="2">3月22日</th>
+            <td>10:00 11:00 <br/> 12:00</td>
+            <td>
+                青年会议酒店南广场
+                (靠近博览中心酒店)
+            </td>
+            <td>
+                粤海酒店停车场
+                (靠近元通地铁站2号出口)
+            </td>
+        </tr>
+        <tr>
+            <td>13:00 14:00 </td>
+            <td>博览中心酒店</td>
+            <td>元通地铁站</td>
+        </tr>
+    </table>
+</div>
+<div class="notes">
+    <p>备注：青年会议酒店（订货会场）</p>
+    <p>博览会议中心（晚宴会场）</p>
+    <p>博览中心酒店（住宿酒店）</p>
+    <p>金陵江滨酒店（住宿酒店）</p>
+    <p>粤海酒店（住宿酒店）</p>
+</div>
 
-    // var main = require('js/main');
-    // main.Slide.init();
-</script>
+
 </body>
 </html>
