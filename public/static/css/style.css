@@ -1,0 +1,553 @@
+			/*2-6页面样式*/
+			html,body{
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				overflow-x:hidden;
+				overflow-y: auto;
+			}
+			img{border:none;}
+			h2,h3,p{margin: 0;padding: 0;-webkit-margin-before: 0;-webkit-margin-after: 0;}
+			h2,h3{font-weight: normal;	}
+			a{
+				text-decoration: none;
+			}
+			/*two为2-entrance页面样式*/
+			.body_two{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background: url(../img/2-entrance.png) 0 0 no-repeat;
+				background-size: 100% 100%;
+			}
+			.body_two h2{
+				font-size: 0.23rem;
+				text-align: center;
+				margin-top: 1.2rem;
+				font-family: "微软雅黑";
+				font-weight: bold;
+				letter-spacing: 0.02rem;
+			}
+			.body_two h3{
+				font-size: 0.18rem;
+				text-align: center;
+				font-family: "微软雅黑";
+				font-weight: bold;
+				letter-spacing: 0.02rem;
+			}
+			.body_two p{
+				font-size: 0.14rem;
+				margin: .44rem 0 0 0rem;
+				line-height: 0.22rem;
+			}
+			.body_two a{
+				width:1.4rem;
+				height: 0.42rem;
+				text-align: center;
+				line-height: 0.42rem;
+				margin:.39rem auto;
+				display: block;
+				background-color: #093389;
+				color: white;
+				font-size: .14rem;
+			}
+		 	.body_two a:active{
+				background-color:#052059;
+			}
+			/*three 为3-model页面样式*/
+			.input_three input{
+				display: block;
+				outline: none;
+				appearance: none;
+				-webkit-tap-highlight-color:rgba(255,255,254,0);
+				border: none;
+				margin-top: 0.11rem;
+				font-size: 0.14rem;
+			}
+			.body_three{
+				width: 100%;
+				height: 100%;
+				background: url(../img/3-model.jpg) 0 0 no-repeat;
+				background-size:cover;
+				overflow: hidden;
+			}
+			.wrap_three{
+				margin: 1.25rem auto;
+			}
+			.body_three p{
+				text-align: center;
+				font-size: 0.20rem;
+				font-weight: bold;
+				font-family: "微软雅黑";
+				margin-bottom: 0.10rem;
+				letter-spacing: 1.5px;
+			}
+			.body_three h3{
+				text-align: center;
+				font-size: 0.14rem;
+				font-weight: normal;
+				font-family: "微软雅黑";
+				letter-spacing: 1.5px;
+			
+			}
+			.input_three{
+				width:2.6rem ;
+				height: 0.36rem;
+				text-align: center;
+				margin: auto;
+				border-top: 1px solid #221816;
+				border-bottom: 1px solid #221816;
+				margin-top: 0.3rem;
+			}
+			#button_three a{
+				width:1.6rem;
+				height: 0.42rem;
+				text-align: center;
+				line-height: 0.42rem;
+				margin:.38rem auto;
+				display: block;
+				background-color: #093389;
+				color: white;
+				font-size: .16rem;	 		
+			}
+			#button_three a:active{
+				background-color:#052059 ;
+			}
+			/*four为4-app样式*/
+			.bg_four{
+				width: 100%;
+			  	height: 58%;
+				background:url(../img/bg.png) 0 0 no-repeat;
+				background-size: 100% 100%;
+				overflow: hidden;
+				position: relative;
+			}
+			.bg_four .head{
+				width: 30%;
+				height: 30%;
+				background: url(../img/head.png) 0 0 no-repeat;
+				background-size: cover;
+				border-radius: 50%;
+				position: absolute;
+				left: 1.1rem;
+				top: 0.66rem;
+			}
+			.bg_four p{
+				font-size: 0.18rem;
+				text-align: center;
+				font-family:"方正黑体简体" ;
+				margin-top:54% ;
+			}
+			.bg_four h3{
+				font-size: 0.165rem;
+				margin-top: 0.06rem;
+				text-align: center;
+			}
+			/*蓝色长条*/
+			.border_four{
+				width: 100%;
+				border: 2px solid #083388;
+			}
+			/*底部链接*/
+			.footer_four{
+				width: 100%;
+				height: 42%;
+				font-size: 0;
+			}
+			.footer_four a{
+				display: block;
+				float: left;
+				width: 33.1%;
+				height: 50%;
+				text-align: center;
+				font-size: 0.15rem;
+				color: #3e3a39;
+				font-family:"方正黑体简体" ;
+				
+			}
+			.footer_four a img{
+				display: block;
+				margin:0 auto;
+				margin-top: 0.23rem;
+				width: 45%;
+			}
+			/*five为第五个页面样式*/
+			.contain_five{
+				width: 100%;
+				height: 100%;
+				position: relative;
+				overflow: hidden;
+			}
+			.contain_five img{
+				width: 100%;
+				height: 30%;
+			}
+			.contain_five p{
+				width: 100%;
+				height: 6.5%;
+				text-align: center;
+				font-size: 0;
+				font-family: "方正黑体简体";
+				overflow: hidden;
+			}
+			.contain_five p i{
+				display: block;
+				width: 14%;
+				height:90%;
+				float: left;
+				margin-left: 0.35rem;
+				background:url(../img/hotel.png) 0 0 no-repeat;
+				background-size: 100% 100%;
+			}
+			.contain_five p span{
+				display: block;
+				float: left;
+				font-size: 0.16rem;
+				padding-left: 0.1rem;
+				padding-top: 0.1rem;
+			}
+			/*地图*/
+			.iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+    		.iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+    		.anchorBL{display:none;}
+    		.maps{
+    			width:86%;
+    			height:15%;
+    			border:#ccc solid 1px;
+    			margin-left: 7%;
+    			position: absolute;
+    			display: none;
+    		}
+    		.show{
+    			display: block;
+    		}
+    		.weizhi{
+    			width: 100%;
+    			margin-top: 40%;
+    			
+    		}
+    		.main{
+    			width: 15%;
+    			height: 4%;
+    			background: #083388;
+    			font-size: 0.14rem;
+    			margin-top: 27%;
+    			color: white;
+    			border-radius: 10%;
+    			text-align: center;
+    			margin-left: 0.2rem;
+    			margin-bottom: 0.05rem;
+    		}
+    		.contain_five .main-pos{
+    			width: 70%;
+    			height: 3.5%;
+    			text-align: left;
+    			font-size: 0.12rem;
+    			margin-left: 0.25rem;
+    		}
+    		.cheer{
+    			width: 18%;
+    			height: 4%;
+    			background: #083388;
+    			font-size: 0.14rem;
+    			margin-top: 2%;
+    			color: white;
+    			border-radius: 10%;
+    			text-align: center;
+    			margin-left: 0.2rem;
+    			margin-bottom: 0.05rem;
+    		}
+    		.contain_five .cheer-pos{
+    			width: 95%;
+    			height: 3.5%;
+    			font-size: 0.125rem;
+    			margin-left: 0.16rem;
+    		}
+    		.contain_five .cheer-pos_1{
+    			width: 85%;
+    			height: 3.5%;
+    			font-size: 0.125rem;
+    			margin-left: 0.15rem;
+    		}
+    		.hotel{
+    			width: 32%;
+    			height: 4%;
+    			background: #083388;
+    			font-size: 0.14rem;
+    			margin-top: 2%;
+    			color: white;
+    			border-radius: 10%;
+    			text-align: center;
+    			margin-left: 0.18rem;
+    			margin-bottom: 0.05rem;
+    		}
+    		.contain_five .hotel-pos{
+    			width: 92%;
+    			height: 3.5%;
+    			font-size: 0.12rem;
+    			margin-left: 0.15rem;
+    		}
+    		.pos_1{
+    			width:6%;
+    			height: 4.4%;
+    			background: url(../img/dingwei.png) 0 0 no-repeat;
+    			background-size: cover;
+    			position: absolute;
+    			left: 52%;
+    			top: 66.5%;
+    		}
+    		.pos_2{
+    			width:6%;
+    			height: 4.4%;
+    			background: url(../img/dingwei.png) 0 0 no-repeat;
+    			background-size: cover;
+    			position: absolute;
+    			left: 86.5%;
+    			top: 80%;
+    		}
+    		.pos_3{
+    			width:6%;
+    			height: 4.4%;
+    			background: url(../img/dingwei.png) 0 0 no-repeat;
+    			background-size: cover;
+    			position: absolute;
+    			left: 91.5%;
+    			top: 93%;
+    		}
+    		.contain_five .on{
+    			background: url(../img/dingwei_1.png) 0 0 no-repeat;
+    			background-size: cover;
+    			
+    		}
+    		/*six为6-intro样式*/
+    		.contain_six{
+				width: 100%;
+				height: 100%;
+				background: url(../img/introduction.jpg) 0 0 no-repeat;
+				background-size: 100% 100%;
+				overflow: hidden;
+			}
+			.contain_six h3{
+				text-align: center;
+				font-size: 0.22rem;
+				font-family: "STHeitiSC-Light";
+				font-weight: normal;
+				margin-top: 32%;
+			}
+			.contain_six p{
+				width: 90%;
+				line-height: 0.25rem;
+				text-indent: 0.285rem;
+				margin-left: 5%;
+				font-size: 0.14rem;
+				font-family: "STHeitiSC-Light";
+			}
+			
+			/*7*/
+			.top_seven{
+				width: 100%;
+				height: 35%;
+				background: url(../img/7-top.jpg)0 0 no-repeat;
+				background-size: 100% 100%;
+				overflow: hidden;
+			}
+			.top_seven h2{
+				font-size: 0.23rem;
+				text-align: center;
+				margin-top: 0.7rem;
+				font-family: "微软雅黑";
+				font-weight: bold;
+				letter-spacing: 0.02rem;
+			}
+			.top_seven h3{
+				font-size: 0.18rem;
+				text-align: center;
+				font-family: "微软雅黑";
+				font-weight: bold;
+				letter-spacing: 0.02rem;
+			}
+			.footer_seven{
+				width: 100%;
+				height: 65%;
+				overflow-x: hidden;
+				overflow-y:auto;
+			}
+			.footer_seven .huiyi{
+				color: #be0a60;
+				font-size: 0.20rem;
+				font-weight: bold;
+				margin-top: 3%;
+				margin-bottom: 0.05rem;
+				padding-left: 7%;
+			}
+			.footer_seven .title{
+				width: 32%;
+				height: 5%;
+				background:#be0a60 ;
+				border-top-right-radius: 10px;
+				font-size: 0.15rem;
+				color: white;
+				text-align: center;
+				margin-left: 5%;
+			}
+			.footer_seven .content{
+				width: 92%;
+				border-top: 1.5px solid #be0a60;
+				margin-left: 5%;
+				position: relative;
+				margin-bottom: 5%;
+			}
+			.footer_seven .content:after{
+				content: " ";
+				display: block;
+				position: absolute;
+				width: 18%;
+			    height: 26%;
+			    right: -19%;
+			    top: -11%;
+			    background: #be0a60;
+			    transform: rotate(45deg);
+			    -webkit-transform: rotate(45deg);
+			    -moz-transform: rotate(45deg);
+			    -o-transform: rotate(45deg);
+			    -ms-transform: rotate(45deg);
+			}
+			
+			.content_1{
+				width: 92%;
+				border-top: 1.5px solid #be0a60;
+				margin-left: 5%;
+				position: relative;
+			}
+			.content_1:after{
+				content: " ";
+				display: block;
+				position: absolute;
+				width: 18%;
+			    height: 26%;
+			    right: -22%;
+			    top: -15%;
+			    background: #be0a60;
+			    transform: rotate(45deg);
+			    -webkit-transform: rotate(45deg);
+			    -moz-transform: rotate(45deg);
+			    -o-transform: rotate(45deg);
+			    -ms-transform: rotate(45deg);
+			}
+			.content_2{
+				width: 92%;
+				border-top: 1.5px solid #be0a60;
+				margin-left: 5%;
+				position: relative;
+			}
+			.content_2:after{
+				content: " ";
+				display: block;
+				position: absolute;
+				width: 18%;
+			    height: 26%;
+			    right: -17%;
+			    top: -5%;
+			    background: #be0a60;
+			    transform: rotate(45deg);
+			    -webkit-transform: rotate(45deg);
+			    -moz-transform: rotate(45deg);
+			    -o-transform: rotate(45deg);
+			    -ms-transform: rotate(45deg);
+			}
+			.footer_seven table tr th{
+				font-size: 0.10rem;
+				font-weight: normal;
+			}
+			.footer_seven table tr td{
+				font-size: 0.10rem;
+				font-weight: normal;
+			}
+			@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) {
+				.content:after{
+					content: " ";
+					display: block;
+					position: absolute;
+					width: 18%;
+				    height: 26%;
+				    right: -20%;
+				    top: -13.5%;
+				}
+			}
+			/*8*/
+			.top_eight{
+				width: 100%;
+				height: 31%;
+				background: url(../img/7-top.jpg)0 0 no-repeat;
+				background-size: 100% 100%;
+				overflow: hidden;
+			}
+			.top_eight h2{
+				font-size: 0.23rem;
+				text-align: center;
+				margin-top: 0.7rem;
+				font-family: "微软雅黑";
+				font-weight: bold;
+				letter-spacing: 0.02rem;
+			}
+			.top_eight h3{
+				font-size: 0.18rem;
+				text-align: center;
+				font-family: "微软雅黑";
+				font-weight: bold;
+				letter-spacing: 0.02rem;
+			}
+			.car-times{
+				width: 30%;
+				height: 3%;
+				margin-top: 5%;
+				margin-left: 5%;
+				background: url(../img/car-times.png) 0 0 no-repeat;
+				background-size: 100% 100%;
+			}
+			p{
+				font-size: 0.18rem;
+				text-align: center;
+			}
+			.tabel{
+				width: 100%;
+				margin-bottom: 5%;
+			}
+			
+			.tabel table tr th{
+				font-size: 0.12rem;
+				text-align: center;
+				font-weight: normal;
+			}
+			.tabel table tr td{
+				text-align: center;
+				white-space:normal;
+				word-break:break-all;
+				font-size: 0.12rem;
+				font-weight: normal;
+			}
+			.notes{
+				width: 100%;
+				overflow: hidden;
+			}
+			.notes p{
+				text-align: center;
+				font-size: 0.14rem;
+			}
+			.notes p:nth-child(1){
+				margin-left: -0.9rem;
+			}
+			.notes p:nth-child(2),.notes p:nth-child(3),.notes p:nth-child(4){
+				margin-left: -0.52rem;
+			}
+			.notes p:nth-child(5){
+				margin-left: -0.75rem;
+			}
+    	/*座位图样式*/
+    		.seat{
+    			width: 100%;
+    			height: 100%;
+    			background: url(../img/9-seat.jpg) 0 0 no-repeat;
+    			background-size: 100% 100%;
+    		}
