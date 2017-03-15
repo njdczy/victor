@@ -25,8 +25,10 @@
                 建邺区江东中路363号
             @elseif (strpos($hotel->name,'金陵江滨酒店'))
                 建邺区扬子江大道260号
-            @else
+            @elseif (strpos($hotel->name,'博览中心酒店'))
                 建邺区金沙江西街16号（国际博览中心南门）
+            @else
+                无
             @endif
         </p>
     </div>
