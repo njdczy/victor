@@ -125,6 +125,7 @@ class VusersController extends Controller
             if (Admin::user()->id != 1) {
                 $grid->disableActions();
                 $grid->disableBatchDeletion();
+                $grid->disableCreation();
             }
             $grid->filter(function ($filter) {
                 $filter->useModal();
