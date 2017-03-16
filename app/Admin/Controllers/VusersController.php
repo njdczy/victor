@@ -110,7 +110,9 @@ class VusersController extends Controller
 
                 $tools->batch(function ($batch) {
                     $batch->add('批量报名', new BatchEnter(1));
-                    $batch->add('批量发送短信', new BatchSend(1));
+                    $batch->add('批量发送邀请短信', new BatchSend(1,1));
+                    $batch->add('批量发送晚宴短信', new BatchSend(1,2));
+                    $batch->add('批量发送发布短信', new BatchSend(1,3));
                 });
             });
         });
@@ -196,8 +198,16 @@ class VusersController extends Controller
             $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
             foreach (Vuser::find($request->get('ids')) as $vuser) {
                 if ($vuser->is_need_sms && $vuser->mobile) {
-                    $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
-                        rawurlencode("尊敬的经销商，2017 VICTOR品牌大会暨秋冬新品发布会欢迎您！请点击链接获取入场凭证 v.xhbuy.cn/u/".$vuser->id);
+                    if ($request->get('content_number') == 1) {
+                        $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
+                            rawurlencode("尊敬的经销商，2017 VICTOR品牌大会暨秋冬新品发布会欢迎您！请点击链接获取入场凭证 v.xhbuy.cn/u/".$vuser->id);
+                    } else if ($request->get('content_number') == 2) {
+                        $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
+                            rawurlencode("尊敬的经销商，欢迎晚宴于下午18:00开始，地址：南京国际博览会议中心，三楼钟山厅，欢迎莅临，谢谢！");
+                    } else if ($request->get('content_number') == 3) {
+                        $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
+                            rawurlencode("尊敬的经销商， 2017 VICTOR 品牌大会暨春夏新品发布会于上午8:30正式开始，地址：南京国际青年文化中心，五楼中华厅，欢迎莅临，谢谢！");
+                    }
 
                     $responses =  xml_to_array(post($post_data, $target));
                     if($responses['code']==2){

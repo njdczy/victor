@@ -26,3 +26,16 @@ function post($curlPost,$url){
     curl_close($curl);
     return $return_str;
 }
+
+function get_sms_content($content_number = 1)
+{
+    if ($content_number == 1) {
+        return "尊敬的经销商，2017 VICTOR品牌大会暨秋冬新品发布会欢迎您！请点击链接获取入场凭证 v.xhbuy.cn/u/【变量】";
+    }
+    if ($content_number == 2) {
+        return "尊敬的经销商，欢迎晚宴于下午18:00开始，地址：南京国际博览会议中心，三楼钟山厅，欢迎莅临，谢谢！";
+    }
+    if ($content_number == 3) {
+        return "尊敬的经销商， 2017 VICTOR 品牌大会暨春夏新品发布会于上午8:30正式开始，地址：南京国际青年文化中心，五楼中华厅，欢迎莅临，谢谢！";
+    }
+}
