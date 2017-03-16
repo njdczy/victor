@@ -196,20 +196,11 @@
 				font-family: "方正黑体简体";
 				overflow: hidden;
 			}
-			.contain_five p i{
-				display: block;
-				width: 14%;
-				height:90%;
-				float: left;
-				margin-left: 0.35rem;
-				background:url(../img/hotel.png) 0 0 no-repeat;
-				background-size: 100% 100%;
-			}
 			.contain_five p span{
 				display: block;
 				float: left;
 				font-size: 0.16rem;
-				padding-left: 0.1rem;
+				padding-left: 0.19rem;
 				padding-top: 0.1rem;
 			}
 			/*地图*/
@@ -362,7 +353,7 @@
 				overflow: hidden;
 			}
 			.top_seven .logo{
-				width: 1.8rem;
+				width: 1.43rem;
 				height: 0.56rem;
 				margin: 0 auto;
 				margin-top: 0.3rem;
@@ -503,13 +494,13 @@
 			/*8*/
 			.top_eight{
 				width: 100%;
-				height: 31%;
-				background: url(../img/7-top.jpg)0 0 no-repeat;
+				height: 35%;
+				background: url(../img/7-top.jpg) 0 0 no-repeat;
 				background-size: 100% 100%;
 				overflow: hidden;
 			}
 			.top_eight .logo{
-				width: 1.8rem;
+				width: 1.43rem;
 				height: 0.56rem;
 				margin: 0 auto;
 				margin-top: 0.3rem;
@@ -521,15 +512,15 @@
 				
 			}
 			.top_eight h2{
-				/*font-size: 0.23rem;*/
+				font-size: 0.23rem;
 				text-align: center;
-				margin-top: 5.7rem;
+				margin-top: 0.1rem;
 				font-family: "微软雅黑";
 				font-weight: bold;
 				letter-spacing: 0.02rem;
 			}
 			.top_eight h3{
-				/*font-size: 0.18rem;*/
+				font-size: 0.18rem;
 				text-align: center;
 				font-family: "微软雅黑";
 				font-weight: bold;

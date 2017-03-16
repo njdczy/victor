@@ -1,7 +1,10 @@
 @include('public.header')
 <body>
-<script src="js/common.js"></script>
+<script src="/static/js/common.js"></script>
 <div class="top_eight">
+	<div class="logo">
+    		 <img src="/static/img/logo.jpg" alt="">
+    	</div>
     <h2>2017 VICTOR品牌大會</h2>
     <h3>暨秋冬新品發布會</h3>
 </div>
