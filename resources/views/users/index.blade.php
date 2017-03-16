@@ -33,7 +33,7 @@
             <img src="/static/img/query.png" style="width: 36%;"/>
             <p style="margin-top: 0.03rem;">座位查询</p>
         </a>
-        <a href="" style="border-top:1px solid #c9d2e5 ;" >
+        <a href="http://www.victorsport.com.cn/" style="border-top:1px solid #c9d2e5 ;" >
             <img src="/static/img/site.png"/>
             <p style="margin-top: 0.077rem;">官方网站</p>
         </a>
