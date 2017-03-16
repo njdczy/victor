@@ -128,5 +128,13 @@
                 $(".maps").eq(index).addClass("show").siblings().removeClass("show");
             })
         })
+//      console.log($('.hotel-pos').html())
+        function corr(){
+        	if($('.hotel-pos').html()=="地址：南京国际博览中心酒店"){
+       		console.log(1);
+       		$('.pos_3').addClass('pos_4');
+      	 }
+        }
+       corr();
     </script>
 </html>
