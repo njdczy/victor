@@ -98,9 +98,9 @@
         function createMap(){
             var map = new BMap.Map("dituContent_3");//在百度地图容器中创建一个地图
             @if (strpos($hotel->name,'粤海国际酒店'))
-            var point = new BMap.Point(118.718146,31.996958);
+            var point = new BMap.Point(118.726044,31.997407);
             @elseif (strpos($hotel->name,'金陵江滨酒店'))
-            var point = new BMap.Point(118.718146,31.996958);
+            var point = new BMap.Point(118.715832,32.017439);
             @elseif (strpos($hotel->name,'博览中心酒店'))
             var point = new BMap.Point(118.718146,31.996958);
             @endif

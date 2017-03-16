@@ -3,7 +3,7 @@
     <script src="/static/js/common.js" ></script>
     <!--人物信息-->
     <div class="bg_four">
-        <div class="head">
+        <div class="head" align="center">
 			<img src="http://v.xhbuy.cn/upload/{{$user->gravatar}}" alt="" />
         </div>
         <p>{{$user->name}}</p>

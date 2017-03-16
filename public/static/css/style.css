@@ -36,10 +36,13 @@
 				font-weight: bold;
 				letter-spacing: 0.02rem;
 			}
-			.body_two p{
-				font-size: 0.14rem;
-				font-family: "STHeitiSC-Light";
+			.body_two .welcome{
+				width:62% ;
+				font-size: 16px;
+				font-weight: bold;
 				line-height: 0.22rem;
+				text-align:justify;
+				margin-left: 20%;
 			}
 			.body_two a{
 				width:1.4rem;
@@ -138,7 +141,7 @@
 			.bg_four .head img{
 				display: block;
 				margin: auto;
-				height: 100%;
+				width: 100%;
 			}
 			.bg_four p{
 				font-size: 0.18rem;
@@ -188,7 +191,7 @@
 			}
 			.contain_five img{
 				width: 100%;
-				height: 30%;
+				height: 35%;
 			}
 			.contain_five p{
 				width: 100%;
