@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('users/welcome');
 });
 
-Route::get('/u/{id}', 'IndexController@index')->name('invite');
+Route::get('/u/{id}', 'IndexController@welcome')->name('invite');
 
 Route::get('/intro', 'IndexController@intro')->name('intro');
 Route::get('/conference', 'IndexController@conference')->name('conference');
@@ -24,6 +24,7 @@ Route::get('/seat', 'IndexController@seat')->name('seat');
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/hotel', 'VusersController@hotel')->name('hotel');
 Route::get('/home', 'VusersController@index')->name('home');

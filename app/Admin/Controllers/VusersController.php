@@ -196,8 +196,8 @@ class VusersController extends Controller
             $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
             foreach (Vuser::find($request->get('ids')) as $vuser) {
                 if ($vuser->is_need_sms && $vuser->mobile) {
-                    $post_data = "account=C12631375&password=8156172ac4908193056621448e70d33a&mobile=".$vuser->mobile."&content=".
-                        rawurlencode("您的验证码是：".'1234'."。请不要把验证码泄露给其他人。");
+                    $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
+                        rawurlencode("尊敬的经销商，2017 VICTOR品牌大会暨秋冬新品发布会欢迎您！请点击链接获取入场凭证 v.xhbuy.cn/u/".$vuser->id);
 
                     $responses =  xml_to_array(post($post_data, $target));
                     if($responses['code']==2){
