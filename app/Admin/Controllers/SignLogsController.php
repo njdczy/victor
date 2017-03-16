@@ -147,22 +147,21 @@ class SignLogsController extends Controller
                     }
                 }, 'details');
             }
-            $vcat_id = Vcat::where('title','=',Admin::user()->name)->first()->toArray()['id'];
-            $con_vcat_lists = DB::table('demo_taggables')->where('vcat_id','=',$vcat_id)->get()->toArray();
-            foreach ($con_vcat_lists as $key => $value ){
-                $conference_ids_array[] = $value->taggable_id;
-            }
+
             $grid->disableExport();
             $grid->disableBatchDeletion();
             $grid->disableRowSelector();
             $grid->disableCreation();
             $grid->disableActions();
             $grid->disablePagination();
-            $grid->filter(function ($filter) use ($conference_ids_array) {
+            $grid->filter(function ($filter)  {
                 $filter->disableIdFilter();
                 $filter->equal('id', '会议名称')
-                    ->select(function () use ($conference_ids_array){
-                        return Conference::whereIn('id',$conference_ids_array)->pluck('name','id');
+                    ->select(function () {
+                        if (Admin::user()->id == 1) {
+                            return Conference::pluck('name','id');
+                        }
+                        return Conference::where('name','=',Admin::user()->name.'签到')->pluck('name','id');
                     });
             });
         });

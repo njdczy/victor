@@ -43,38 +43,71 @@ class VusersController extends Controller
     private function grid()
     {
         return Vuser::grid(function (Grid $grid) {
-            $grid->model()->orderBy('number','asc');
+            $grid->model()->orderBy('number', 'asc');
             $grid->number('参会人员编号');
-            $grid->card('卡片号码')->editable();
-            $grid->column('type','类别')->display(function(){
-                $prrent_id = Vcat::find($this->vcat_id)->parent_id;
-                return $prrent_id?Vcat::find($prrent_id)->title:'';
-            });
-            $grid->vcat_id('部门')->display(function($vcat_id){
-                return Vcat::find($vcat_id)->title;
-            });
-            $grid->province_id('省')->display(function($province_id){
-                return $province_id?Province::find($province_id)->name:'';
-            });
-            $grid->name('参会人员')->editable();
-            $grid->gravatar('头像')->image('', 100, 100);
-            $grid->post_id('职务')->display(function($post_id) {
-                return $post_id?Post::find($post_id)->name:'';
-            });
-            $grid->mobile('手机号')->editable();
-            $grid->code('客户编码')->editable();
-            $grid->company('客户')->editable();
-            $grid->hotel('入住饭店')->display(function($hotel) {
-                return $hotel?Hotel::find($hotel)->name:'';
-            });
-            $states = [
-                'on' => ['text' => '是'],
-                'off' => ['text' => '否'],
-            ];
-            $grid->column('switch_group','是否')->switchGroup([
-                'has_attend' => '参加过订货会', 'is_need_sms' => '推送短信', 'is_enter' => '已报名'
-            ], $states);
-
+            if (Admin::user()->id == 1) {
+                $grid->card('卡片号码')->editable();
+                $grid->column('type', '类别')->display(function () {
+                    $prrent_id = Vcat::find($this->vcat_id)->parent_id;
+                    return $prrent_id ? Vcat::find($prrent_id)->title : '';
+                });
+                $grid->vcat_id('部门')->display(function ($vcat_id) {
+                    return Vcat::find($vcat_id)->title;
+                });
+                $grid->province_id('省')->display(function ($province_id) {
+                    return $province_id ? Province::find($province_id)->name : '';
+                });
+                $grid->name('参会人员')->editable();
+                $grid->gravatar('头像')->image('', 100, 100);
+                $grid->post_id('职务')->display(function ($post_id) {
+                    return $post_id ? Post::find($post_id)->name : '';
+                });
+                $grid->mobile('手机号')->editable();
+                $grid->code('客户编码')->editable();
+                $grid->company('客户')->editable();
+                $grid->hotel('入住饭店')->display(function ($hotel) {
+                    return $hotel ? Hotel::find($hotel)->name : '';
+                });
+                $states = [
+                    'on' => ['text' => '是'],
+                    'off' => ['text' => '否'],
+                ];
+                $grid->column('switch_group', '是否')->switchGroup([
+                    'has_attend' => '参加过订货会', 'is_need_sms' => '推送短信', 'is_enter' => '已报名'
+                ], $states);
+            } else {
+                $grid->card('卡片号码');
+                $grid->column('type', '类别')->display(function () {
+                    $prrent_id = Vcat::find($this->vcat_id)->parent_id;
+                    return $prrent_id ? Vcat::find($prrent_id)->title : '';
+                });
+                $grid->vcat_id('部门')->display(function ($vcat_id) {
+                    return Vcat::find($vcat_id)->title;
+                });
+                $grid->province_id('省')->display(function ($province_id) {
+                    return $province_id ? Province::find($province_id)->name : '';
+                });
+                $grid->name('参会人员');
+                $grid->gravatar('头像')->image('', 100, 100);
+                $grid->post_id('职务')->display(function ($post_id) {
+                    return $post_id ? Post::find($post_id)->name : '';
+                });
+                $grid->mobile('手机号');
+                $grid->code('客户编码');
+                $grid->company('客户');
+                $grid->hotel('入住饭店')->display(function ($hotel) {
+                    return $hotel ? Hotel::find($hotel)->name : '';
+                });
+                $grid->has_attend('参加过订货会')->display(function() {
+                    return $this->has_sms? '是':'否';
+                });
+                $grid->has_attend('推送短信')->display(function() {
+                    return $this->has_sms? '是':'否';
+                });
+                $grid->has_attend('已报名')->display(function() {
+                    return $this->has_sms? '是':'否';
+                });
+            }
             $grid->salesman_id('业务员')->display(function($salesman_id) {
                 return $salesman_id?Salesman::find($salesman_id)->name:'';
             });
@@ -86,7 +119,10 @@ class VusersController extends Controller
             $grid->has_sms('已发送短信')->display(function() {
                 return $this->has_sms? '是':'否';
             });
-
+            if (Admin::user()->id != 1) {
+                $grid->disableActions();
+                $grid->disableBatchDeletion();
+            }
             $grid->filter(function ($filter) {
                 $filter->useModal();
                 $filter->disableIdFilter();
@@ -105,16 +141,18 @@ class VusersController extends Controller
                 $filter->like('hotel','入住酒店');
             });
             $grid->exporter(new CustomExporter());
-            $grid->tools(function ($tools) {
-                $tools->append(new DelCard());
+            if (Admin::user()->id == 1) {
+                $grid->tools(function ($tools) {
+                    $tools->append(new DelCard());
 
-                $tools->batch(function ($batch) {
-                    $batch->add('批量报名', new BatchEnter(1));
-                    $batch->add('批量发送邀请短信', new BatchSend(1,1));
-                    $batch->add('批量发送晚宴短信', new BatchSend(1,2));
-                    $batch->add('批量发送发布短信', new BatchSend(1,3));
+                    $tools->batch(function ($batch) {
+                        $batch->add('批量报名', new BatchEnter(1));
+                        $batch->add('批量发送邀请短信', new BatchSend(1,1));
+                        $batch->add('批量发送晚宴短信', new BatchSend(1,2));
+                        $batch->add('批量发送发布短信', new BatchSend(1,3));
+                    });
                 });
-            });
+            }
         });
     }
 
