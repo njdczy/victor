@@ -508,6 +508,18 @@
 				background-size: 100% 100%;
 				overflow: hidden;
 			}
+			.top_eight .logo{
+				width: 1.8rem;
+				height: 0.56rem;
+				margin: 0 auto;
+				margin-top: 0.3rem;
+				overflow: hidden;
+			}
+			.top_eight .logo img{
+				display: block;
+				width: 100%;
+				
+			}
 			.top_eight h2{
 				/*font-size: 0.23rem;*/
 				text-align: center;
