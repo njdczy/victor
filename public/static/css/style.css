@@ -136,6 +136,8 @@
 				overflow: hidden;
 			}
 			.bg_four .head img{
+				display: block;
+				margin: auto;
 				height: 100%;
 			}
 			.bg_four p{
