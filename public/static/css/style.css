@@ -38,7 +38,7 @@
 			}
 			.body_two p{
 				font-size: 0.14rem;
-				margin: .44rem 0 0 0rem;
+				font-family: "STHeitiSC-Light";
 				line-height: 0.22rem;
 			}
 			.body_two a{
@@ -354,7 +354,7 @@
 			}
 			.top_seven .logo{
 				width: 1.43rem;
-				height: 0.56rem;
+				height: 0.5rem;
 				margin: 0 auto;
 				margin-top: 0.3rem;
 				overflow: hidden;
@@ -368,14 +368,14 @@
 				font-size: 0.23rem;
 				text-align: center;
 				margin-top: 0.1rem;
-				font-family: "微软雅黑";
+				font-family: "方正大黑简体";
 				font-weight: bold;
 				letter-spacing: 0.02rem;
 			}
 			.top_seven h3{
 				font-size: 0.18rem;
 				text-align: center;
-				font-family: "微软雅黑";
+				font-family: "方正大黑简体";
 				font-weight: bold;
 				letter-spacing: 0.02rem;
 			}
