@@ -9,8 +9,10 @@
     <h3>暨秋冬新品發布會</h3>
 </div>
 <div class="car-times"></div>
-<p>金陵江滨酒店班车时刻表</p>
-<div class="tabel">
+
+<div class="draw">
+	<p>金陵江滨酒店班车时刻表</p>
+	<div class="tabel">
     <table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
         <col width="60" />
         <col width="140" />
@@ -237,6 +239,14 @@
             <td>元通地铁站</td>
         </tr>
     </table>
+</div>
+<div class="notes">
+	<p>备注：青年会议酒店（订货会场）</p>
+	<p>博览会议中心（晚宴会场）</p>
+	<p>博览中心酒店（住宿酒店）</p>
+	<p>金陵江滨酒店（住宿酒店）</p>
+	<p>粤海酒店（住宿酒店）</p>
+</div>
 </div>
 
 </body>

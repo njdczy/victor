@@ -6,7 +6,7 @@
         <div class="pos_2 position"></div>
         <div class="pos_3 position"></div>
         <img src="/static/img/top-hotel.jpg"/>
-        <p><span>会场与酒店信息</span></p>
+        <p class="hotel_info"><span>会场与酒店信息</span></p>
 
         <!--百度地图容器-->
         <div id="dituContent_1" class="maps show"></div>

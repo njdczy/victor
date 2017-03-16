@@ -37,12 +37,12 @@
 				letter-spacing: 0.02rem;
 			}
 			.body_two .welcome{
-				width:62% ;
+				width:70% ;
 				font-size: 16px;
 				font-weight: bold;
 				line-height: 0.22rem;
 				text-align:justify;
-				margin-left: 20%;
+				margin-left: 15%;
 			}
 			.body_two a{
 				width:1.4rem;
@@ -193,9 +193,10 @@
 				width: 100%;
 				height: 35%;
 			}
-			.contain_five p{
+			.contain_five .hotel_info{
 				width: 100%;
 				height: 6.5%;
+				margin-top: -0.2rem;
 				text-align: center;
 				font-size: 0;
 				font-family: "方正黑体简体";
@@ -214,9 +215,10 @@
     		.anchorBL{display:none;}
     		.maps{
     			width:86%;
-    			height:15%;
+    			height:16%;
     			border:#ccc solid 1px;
     			margin-left: 7%;
+    			margin-top: -.1rem;
     			position: absolute;
     			display: none;
     		}
@@ -295,8 +297,8 @@
     			background: url(../img/dingwei.png) 0 0 no-repeat;
     			background-size: cover;
     			position: absolute;
-    			left: 52%;
-    			top: 66.5%;
+    			left: 50%;
+    			top: 67%;
     		}
     		.pos_2{
     			width:6%;
@@ -304,8 +306,8 @@
     			background: url(../img/dingwei.png) 0 0 no-repeat;
     			background-size: cover;
     			position: absolute;
-    			left: 86.5%;
-    			top: 80%;
+    			left: 85.5%;
+    			top: 81%;
     		}
     		.pos_3{
     			width:6%;
@@ -313,8 +315,8 @@
     			background: url(../img/dingwei.png) 0 0 no-repeat;
     			background-size: cover;
     			position: absolute;
-    			left: 91.5%;
-    			top: 93%;
+    			left: 92.5%;
+    			top: 95%;
     		}
     		.contain_five .on{
     			background: url(../img/dingwei_1.png) 0 0 no-repeat;
@@ -540,8 +542,13 @@
 				background-size: 100% 100%;
 			}
 			p{
-				font-size: 0.18rem;
+				font-size: 0.16rem;
+				margin-bottom: 0.05rem;
 				text-align: center;
+			}
+			.draw{
+				height: 65%;
+				overflow: auto;
 			}
 			.tabel{
 				width: 100%;
