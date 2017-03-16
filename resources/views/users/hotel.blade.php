@@ -4,7 +4,7 @@
     <div class="contain_five">
         <div class="pos_1 position on"></div>
         <div class="pos_2 position"></div>
-        <div class="pos_3 position"></div>
+        <div class="pos_3 position pos_4"></div>
         <img src="/static/img/top-hotel.jpg"/>
         <p class="hotel_info"><span>会场与酒店信息</span></p>
 

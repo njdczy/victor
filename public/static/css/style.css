@@ -37,12 +37,12 @@
 				letter-spacing: 0.02rem;
 			}
 			.body_two .welcome{
-				width:70% ;
+				width:75% ;
 				font-size: 16px;
 				font-weight: bold;
 				line-height: 0.22rem;
 				text-align:justify;
-				margin-left: 15%;
+				margin-left: 12.5%;
 			}
 			.body_two a{
 				width:1.4rem;
@@ -130,17 +130,20 @@
 				position: relative;
 			}
 			.bg_four .head{
+				display: flex;
+				align-items:center;
 				width: 36%;
 				height: 36%;
 				border-radius: 50%;
 				position: absolute;
 				left: 1.1rem;
 				top: 0.66rem;
+				
 				overflow: hidden;
 			}
 			.bg_four .head img{
-				display: block;
-				margin: auto;
+				/*display: block;
+				margin: auto;*/
 				width: 100%;
 			}
 			.bg_four p{
@@ -191,7 +194,7 @@
 			}
 			.contain_five img{
 				width: 100%;
-				height: 35%;
+				height: 32%;
 			}
 			.contain_five .hotel_info{
 				width: 100%;
@@ -214,8 +217,8 @@
     		.iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
     		.anchorBL{display:none;}
     		.maps{
-    			width:86%;
-    			height:16%;
+    			width: 88%;
+    			height: 20%;
     			border:#ccc solid 1px;
     			margin-left: 7%;
     			margin-top: -.1rem;
@@ -235,7 +238,7 @@
     			height: 4%;
     			background: #083388;
     			font-size: 0.14rem;
-    			margin-top: 27%;
+    			margin-top: 36%;
     			color: white;
     			border-radius: 10%;
     			text-align: center;
@@ -265,13 +268,15 @@
     			width: 95%;
     			height: 3.5%;
     			font-size: 0.125rem;
-    			margin-left: 0.16rem;
+    			margin-left: 0.25rem;
+   				 text-align: left;
     		}
     		.contain_five .cheer-pos_1{
     			width: 85%;
     			height: 3.5%;
     			font-size: 0.125rem;
-    			margin-left: 0.15rem;
+    			margin-left: 0.25rem;
+    			text-align: left;
     		}
     		.hotel{
     			width: 32%;
@@ -289,7 +294,8 @@
     			width: 92%;
     			height: 3.5%;
     			font-size: 0.12rem;
-    			margin-left: 0.15rem;
+    			margin-left: 0.25rem;
+    			text-align: left;
     		}
     		.pos_1{
     			width:6%;
@@ -298,7 +304,7 @@
     			background-size: cover;
     			position: absolute;
     			left: 50%;
-    			top: 67%;
+    			top: 69%;
     		}
     		.pos_2{
     			width:6%;
@@ -306,8 +312,8 @@
     			background: url(../img/dingwei.png) 0 0 no-repeat;
     			background-size: cover;
     			position: absolute;
-    			left: 85.5%;
-    			top: 81%;
+    			left: 86.5%;
+    			top: 83%;
     		}
     		.pos_3{
     			width:6%;
@@ -317,6 +323,10 @@
     			position: absolute;
     			left: 92.5%;
     			top: 95%;
+    		}
+    		.pos_4{
+    			left: 55.5%;
+    			top: 96%;
     		}
     		.contain_five .on{
     			background: url(../img/dingwei_1.png) 0 0 no-repeat;
