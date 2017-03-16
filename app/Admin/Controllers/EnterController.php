@@ -169,7 +169,7 @@ EOT;
                         if (Admin::user()->id == 1) {
                             return Conference::pluck('name','id');
                         }
-                        return Conference::where('name','=',Admin::user()->name.'签到')->pluck('name','id');
+                        return Conference::where('name','like',Admin::user()->name.'%')->pluck('name','id');
                     });
             });
         });
