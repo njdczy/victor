@@ -43,9 +43,10 @@ class VusersController extends Controller
     private function grid()
     {
         return Vuser::grid(function (Grid $grid) {
-            $grid->model()->orderBy('number', 'asc');
+
             $grid->number('参会人员编号');
             if (Admin::user()->id == 1) {
+                $grid->model()->orderBy('number', 'asc');
                 $grid->card('卡片号码')->editable();
                 $grid->column('type', '类别')->display(function () {
                     $prrent_id = Vcat::find($this->vcat_id)->parent_id;
@@ -76,6 +77,8 @@ class VusersController extends Controller
                     'has_attend' => '参加过订货会', 'is_need_sms' => '推送短信', 'is_enter' => '已报名'
                 ], $states);
             } else {
+                $vcat_id = Vcat::where('title','=',Admin::user()->name)->first()->toArray()['id'];
+                $grid->model()->where('vcat_id','=',$vcat_id)->orderBy('number', 'asc');
                 $grid->card('卡片号码');
                 $grid->column('type', '类别')->display(function () {
                     $prrent_id = Vcat::find($this->vcat_id)->parent_id;
