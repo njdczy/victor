@@ -9,11 +9,9 @@
           
          
        </p>
-        <p class="welcome"> 2017 VICTOR品牌大会暨秋冬新品
-            发布会欢迎您！感谢您你始终如一的</p>
-              <p class="welcome">    支持与付出。</p>
-        <p class="welcome">2017，让我们继续精诚合作，相携
-            与共，共创“胜利”辉煌!</p> 
+        <p class="welcome">欢迎光临2017 VICTOR 品牌大会暨秋冬新品发布会！</p>
+             
+        <p class="welcome">2感谢您对威克多一如既往的支持，愿我们精诚合作，精彩再续！ </p> 
                            
         <!--<p>
             <p>尊敬的来宾：<br /></p>
