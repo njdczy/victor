@@ -76,8 +76,10 @@ class VusersController extends Controller
                     'has_attend' => '参加过订货会', 'is_need_sms' => '推送短信', 'is_enter' => '已报名'
                 ], $states);
             } else {
-                $vcat_id = Vcat::where('title','=',Admin::user()->name)->first()->toArray();
+                $vcat_id = Vcat::where('title','=',Admin::user()->name)->first();
+
                 if (isset($vcat_id) && $vcat_id) {
+                    $vcat_id->toArray();
                     $grid->model()->where('vcat_id','=',$vcat_id['id'])->orderBy('number', 'asc');
                 }
 
