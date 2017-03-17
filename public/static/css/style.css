@@ -133,7 +133,7 @@
 				display: flex;
 				align-items:center;
 				width: 36%;
-				height: 36%;
+				height: 43%;
 				border-radius: 50%;
 				position: absolute;
 				left: 1.1rem;
@@ -150,7 +150,7 @@
 				font-size: 0.18rem;
 				text-align: center;
 				font-family:"方正黑体简体" ;
-				margin-top:61% ;
+				margin-top:66% ;
 			}
 			.bg_four h3{
 				font-size: 0.165rem;
@@ -238,7 +238,7 @@
     			height: 4%;
     			background: #083388;
     			font-size: 0.14rem;
-    			margin-top: 36%;
+    			margin-top: 32%;
     			color: white;
     			border-radius: 10%;
     			text-align: center;
@@ -304,7 +304,7 @@
     			background-size: cover;
     			position: absolute;
     			left: 50%;
-    			top: 65%;
+    			top: 64%;
     		}
     		.pos_2{
     			width:6%;
@@ -313,7 +313,7 @@
     			background-size: cover;
     			position: absolute;
     			left: 86.5%;
-    			top: 80%;
+    			top: 78%;
     		}
     		.pos_3{
     			width:6%;
@@ -322,7 +322,7 @@
     			background-size: cover;
     			position: absolute;
     			left: 93.5%;
-    			top: 93%;
+    			top: 91%;
     		}
     		.pos_4{
     			/*left: 55.5%;
