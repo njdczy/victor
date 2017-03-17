@@ -33,27 +33,12 @@ class ConferencesController extends Controller
             $content->row(
                 $this->grid()
             );
-//            for ($i = 0; $i < ceil(count($date) / 2); $i++) {
-//                $content->row(function (Row $row) use ($date, $i) {
-//                    for ($key = $i * 2; $key <= $i * 2 + 1; $key++) {
-//                        if (isset($date[$key])) {
-//                            $row->column(6, function (Column $column) use ($date, $key) {
-//                                $column->append((
-//                                new Box(
-//                                    $date[$key], $this->grid($date[$key])
-//                                )));
-//                            });
-//                        }
-//                    }
-//                });
-//            }
         });
     }
 
     protected function grid()
     {
         return Admin::grid(Conference::class, function (Grid $grid)  {
-            //$grid->model()->where('date', '=', $date);
             $grid->column('time','时间')->display(function () {
                 return $this->start_time.'-'.$this->end_time;
             });
@@ -64,7 +49,11 @@ class ConferencesController extends Controller
                 }
             );
             $grid->vcats('参加该会议的单位')->pluck('title')->label();
-
+            if (Admin::user()->id != 1) {
+                $grid->model()->where('name','like',Admin::user()->name.'%');
+                $grid->disableActions();
+                $grid->disableCreation();
+            }
             $grid->disableExport();
             $grid->disableBatchDeletion();
             $grid->disableRowSelector();

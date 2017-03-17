@@ -136,7 +136,6 @@ class SignLogsController extends Controller
                 $tmp = SignLog::select('vuser_id')
                     ->where('conference_id','=',$id)->get()->toArray();
                 $vuser_ids_array = array_column($tmp, 'vuser_id');
-
                 $grid->column('details','签到详情')->expand(function () use ($vuser_ids_array) {
                     if (is_array($vuser_ids_array)) {
                         $name = Vuser::whereIn('id',$vuser_ids_array)->pluck('name')->all();
@@ -147,7 +146,7 @@ class SignLogsController extends Controller
                     }
                 }, 'details');
             }
-            if ($vuser_ids_array){
+            if (isset($vuser_ids_array) && $vuser_ids_array){
                 $grid->exporter(new CustomExporter($vuser_ids_array));
             } else {
                 $grid->disableExport();

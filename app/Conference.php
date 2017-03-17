@@ -10,8 +10,8 @@ use Encore\Admin\Traits\ModelTree;
 
 class Conference extends Model
 {
-    use  ModelTree,AdminBuilder;
-
+    use AdminBuilder;
+    protected $fillable;
     public function vcats()
     {
         return $this->morphToMany(Vcat::class, 'taggable', 'demo_taggables');

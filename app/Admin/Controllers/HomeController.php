@@ -27,18 +27,20 @@ class HomeController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Dashboard');
-            $content->description('网站数据为假数据');
+            $content->header('VICTOR');
+            $content->description('会议签到系统');
 
             $content->row(function ($row) {
                 $vuser_count = Vuser::count();
                 $conference_count = Conference::count();
-                $sign_count = Vuser::where('is_sign', '=', 1)->count();
-                $sign_vcat_count = Vcat::where('is_sign', '=', 1)->count();
+//                $sign_count = Vuser::where('is_sign', '=', 1)->count();
+//                $sign_vcat_count = Vcat::where('is_sign', '=', 1)->count();
+                $row->column(2,function(){});
                 $row->column(3, new InfoBox('人员总数', 'users', 'aqua', '/admin/vusers',$vuser_count));
+                $row->column(2,function(){});
                 $row->column(3, new InfoBox('会议数', 'calendar', 'green', '/admin/conferences', $conference_count));
-                $row->column(3, new InfoBox('已报到人数', 'book', 'yellow', '/admin/sign', $sign_count));
-                $row->column(3, new InfoBox('已报到家数', 'file', 'red', '/admin/sign', $sign_vcat_count));
+//                $row->column(3, new InfoBox('已报到人数', 'book', 'yellow', '/admin/sign', $sign_count));
+//                $row->column(3, new InfoBox('已报到家数', 'file', 'red', '/admin/sign', $sign_vcat_count));
             });
 
 
@@ -52,14 +54,14 @@ class HomeController extends Controller
 //                    ->attribute('disabled', 'disabled')
 //                    ->placeholder('邀请您参加订货会');
 //                //$form->divide();
-
-                $box = new Box('第二个容器',
-                    '<p>邀请您参加订货会</p>
-                     <hr>
-                    <button>发送短信</button>'
-                );
-                $row->column(2,function(){});
-                $row->column(8,$box->style('primary'));
+//
+//                $box = new Box('第二个容器',
+//                    '<p>邀请您参加订货会</p>
+//                     <hr>
+//                    <button>发送短信</button>'
+//                );
+//                $row->column(2,function(){});
+//                $row->column(8,$box->style('primary'));
             });
 
 
