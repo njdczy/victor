@@ -49,7 +49,7 @@ class ConferencesController extends Controller
                 }
             );
             $grid->vcats('参加该会议的单位')->pluck('title')->label();
-            if (Admin::user()->id != 1) {
+            if (Admin::user()->id != 1 && Admin::user()->name != 'VICTOR') {
                 $grid->model()->where('name','like',Admin::user()->name.'%');
                 $grid->disableActions();
                 $grid->disableCreation();

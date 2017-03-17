@@ -160,7 +160,7 @@ class SignLogsController extends Controller
                 $filter->disableIdFilter();
                 $filter->equal('id', '会议名称')
                     ->select(function () {
-                        if (Admin::user()->id == 1) {
+                        if (Admin::user()->id == 1  && Admin::user()->name == 'VICTOR') {
                             return Conference::pluck('name','id');
                         }
                         return Conference::where('name','like',Admin::user()->name.'%')->pluck('name','id');
