@@ -134,10 +134,19 @@ class VusersController extends Controller
             $grid->filter(function ($filter) {
                 $filter->useModal();
                 $filter->disableIdFilter();
-                $filter->equal('vcat_id', '类别')
-                    ->select(function () {
+
+                $filter->where(function ($query) {
+                    $select_vcat = Vcat::where('id','=',$this->input)->where('parent_id','=',0)->get();
+                    if ($select_vcat->isEmpty()) {//是子类
+                        $query->where('vcat_id', '=', "$this->input");
+                    } else {
+                        $children_vcats = Vcat::where('parent_id','=',$this->input)->get()->toArray();
+                        $children_vcats = array_column($children_vcats, 'id');
+                        $query->whereIn('vcat_id',$children_vcats);
+                    }
+                },'类别&部门')->select(function () {
                         return Vcat::selectOptions();
-                    });
+                });
                 $filter->equal('is_enter', '是否报名')
                     ->select([0=>'否',1=>'是']);
                 $filter->equal('has_attend', '是否参加过订货会')
