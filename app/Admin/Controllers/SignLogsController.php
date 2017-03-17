@@ -147,7 +147,11 @@ class SignLogsController extends Controller
                     }
                 }, 'details');
             }
-            $grid->exporter(new CustomExporter());
+            if ($vuser_ids_array){
+                $grid->exporter(new CustomExporter($vuser_ids_array));
+            } else {
+                $grid->disableExport();
+            }
             $grid->disableBatchDeletion();
             $grid->disableRowSelector();
             $grid->disableCreation();

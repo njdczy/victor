@@ -21,6 +21,13 @@ use Excel;
  */
 class CustomExporter extends AbstractExporter
 {
+    public  $vuser_ids_array=null;
+    public function __construct($vuser_ids_array=null)
+    {
+        parent::__construct();
+        $this->vuser_ids_array = $vuser_ids_array;
+    }
+
     private $execl_title = [
         '参会人员编号',
         '卡片号码',
@@ -41,7 +48,12 @@ class CustomExporter extends AbstractExporter
 
     public function export()
     {
-        $data = Vuser::all()->toArray();
+        if (is_null($this->vuser_ids_array)) {
+            $data = $this->getData();
+        }else{
+            $data = Vuser::whereIn('id',$this->vuser_ids_array)->get()->toArray();
+        }
+
         $vcat_id_array = array_unique(array_column($data, 'vcat_id'));
         $province_id_array = array_unique(array_column($data, 'province_id'));
         $post_id_array = array_unique(array_column($data, 'post_id'));
