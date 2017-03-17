@@ -16,7 +16,7 @@ use Encore\Admin\Grid;
 
 use Illuminate\Http\Request;
 use Encore\Admin\Widgets\Collapse;
-use Encore\Admin\Widgets\Chart\Bar;
+use App\Admin\Extensions\CustomExporter;
 
 use App\SignLog;
 use App\Conference;
@@ -147,8 +147,7 @@ class SignLogsController extends Controller
                     }
                 }, 'details');
             }
-
-            $grid->disableExport();
+            $grid->exporter(new CustomExporter());
             $grid->disableBatchDeletion();
             $grid->disableRowSelector();
             $grid->disableCreation();

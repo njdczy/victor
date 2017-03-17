@@ -8,6 +8,7 @@ use App\Post;
 use App\Province;
 use App\Salesman;
 use App\Vcat;
+use App\Vuser;
 use Carbon\Carbon;
 use Encore\Admin\Grid\Exporters\AbstractExporter;
 use Excel;
@@ -40,7 +41,7 @@ class CustomExporter extends AbstractExporter
 
     public function export()
     {
-        $data = $this->getData();
+        $data = Vuser::all()->toArray();
         $vcat_id_array = array_unique(array_column($data, 'vcat_id'));
         $province_id_array = array_unique(array_column($data, 'province_id'));
         $post_id_array = array_unique(array_column($data, 'post_id'));

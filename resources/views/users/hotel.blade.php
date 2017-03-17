@@ -23,7 +23,7 @@
         <p  class="hotel-pos">地址：
             @if (strpos($hotel->name,'粤海国际酒店'))
                 建邺区江东中路363号
-            @elseif (strpos($hotel->name,'金陵江滨酒店'))
+            @elseif (strpos($hotel->name,'金陵江滨'))
                 建邺区扬子江大道260号
             @elseif (strpos($hotel->name,'博览中心酒店'))
                 建邺区金沙江西街16号（国际博览中心南门）
@@ -99,7 +99,7 @@
             var map = new BMap.Map("dituContent_3");//在百度地图容器中创建一个地图
             @if (strpos($hotel->name,'粤海国际酒店'))
             var point = new BMap.Point(118.726044,31.997407);
-            @elseif (strpos($hotel->name,'金陵江滨酒店'))
+            @elseif (strpos($hotel->name,'金陵江滨'))
             var point = new BMap.Point(118.715832,32.017439);
             @elseif (strpos($hotel->name,'博览中心酒店'))
             var point = new BMap.Point(118.718146,31.996958);

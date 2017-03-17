@@ -18,7 +18,7 @@ class SignController extends Controller
     {
         $conference_id = $request->get('conference_id');
         $vuser = Vuser::where('card','=',$request->get('card'))->first();
-        if (isset($vuser->id)) {
+        if (isset($vuser->id)) {  //如果用户存在
             $res = DB::table('demo_taggables')
                 ->select('vcat_id')
                 ->where('taggable_id','=',$conference_id)
@@ -27,7 +27,7 @@ class SignController extends Controller
             foreach ($res as $k => $vcat_id) {
                 $in_array[] = $vcat_id->vcat_id;
             }
-            if (in_array($vuser->vcat_id,$in_array)) {
+            if (in_array($vuser->vcat_id,$in_array)) {//如果用户类别在这个会议中
                 $vcats = DB::table('vcats')
                     ->where('id','=',$vuser->vcat_id)
                     ->pluck('title')
@@ -40,7 +40,7 @@ class SignController extends Controller
                     ->where('id','=',$vuser->salesman_id)
                     ->pluck('name')
                     ->toArray();
-                $vuser_info = [
+                $vuser_info = [//输入用户信息
                     'vuser_gravatar' => $vuser->gravatar,
                     //'vcat_one' => $vuser->gravatar,
                     'vcat_two' => $vcats[0],
@@ -50,11 +50,13 @@ class SignController extends Controller
                     'salesman_name' => $salesman[0],
                     'sign_time' => Carbon::now()->toDateTimeString(),
                 ];
-                $sign_log = SignLog::where('vuser_id','=',$vuser->id)->first();
+                $sign_log = SignLog::where('vuser_id','=',$vuser->id)
+                    ->where('conference_id','=',$conference_id)
+                    ->first();//查找用户签到记录
 
                 if (isset($sign_log->id)) {
                     $error = -1;
-                    $msg = '已经签到过';
+                    $msg = '已经签到过该会议';
                 } else {
                     //记录到签到表中 s
                     $new_sign_log = new SignLog;
