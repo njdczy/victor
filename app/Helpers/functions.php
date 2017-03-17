@@ -38,4 +38,7 @@ function get_sms_content($content_number = 1)
     if ($content_number == 3) {
         return "尊敬的经销商， 2017 VICTOR 品牌大会暨春夏新品发布会于上午8:30正式开始，地址：南京国际青年文化中心，五楼中华厅，欢迎莅临，谢谢！";
     }
+    if ($content_number == 4) {
+        return "尊敬的经销商，南京天气：3月20日小雨转阴9-12°C；3月21日多云9-15°C；3月22日阴转暴雨12-13°C。出行请带好雨伞，注意保暖！";
+    }
 }
