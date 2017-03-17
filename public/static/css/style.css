@@ -19,7 +19,7 @@
 				height: 100%;
 				overflow: hidden;
 				background: url(../img/2-entrance.png) 0 0 no-repeat;
-				background-size: 100% 100%;
+				background-size: cover;
 			}
 			.body_two h2{
 				font-size: 0.23rem;
@@ -125,7 +125,7 @@
 				width: 100%;
 			  	height: 58%;
 				background:url(../img/bg.png) 0 0 no-repeat;
-				background-size: 100% 100%;
+				background-size: cover;
 				overflow: hidden;
 				position: relative;
 			}
@@ -339,7 +339,7 @@
 				width: 100%;
 				height: 100%;
 				background: url(../img/introduction.jpg) 0 0 no-repeat;
-				background-size: 100% 100%;
+				background-size: cover;
 				overflow: hidden;
 			}
 			.contain_six h3{
@@ -550,7 +550,7 @@
 				margin-top: 5%;
 				margin-left: 5%;
 				background: url(../img/car-times.png) 0 0 no-repeat;
-				background-size: 100% 100%;
+				background-size: cover;
 			}
 			p{
 				font-size: 0.14rem;
