@@ -51,7 +51,7 @@ class EnterController extends Controller
     <tbody>
         <tr>
             <td>照片:</td>
-            <td><img id="vuser_gravatar" style="width:100px;height:100px;" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"/></td>
+            <td><img id="vuser_gravatar" style="width:100px;height:100px;" src="/static/img/victor_logo.png"/></td>
         </tr>
         <tr>
           <!--<td>类别:<span id="vcat_one"></span></td>-->
@@ -144,8 +144,8 @@ EOT;
                 $box = new Box('统计', '
 <span>应到人数:</span><b id="should_vuser_count">'.$should_vuser_count.'</b>
 <span>实到人数:</span><b id="sign_vuser_count">'.$sign_vuser_count['sign_count'].'</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span>应到家数:</span><b id="should_vcat_count">'.$should_vcat_count.'</b>
-<span>实到家数:</span><b id="sign_vcat_count">'.$sign_vcat_count.'</b>'
+<span>应到客户家数:</span><b id="should_vcat_count">'.$should_vcat_count.'</b>
+<span>实到客户家数:</span><b id="sign_vcat_count">'.$sign_vcat_count.'</b>'
                 );
                 $content->row($box->style('primary'));
             }
