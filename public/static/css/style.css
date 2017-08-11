@@ -20,6 +20,7 @@
 				overflow: hidden;
 				background: url(../img/background-img.png) 0 0 no-repeat;
 				background-size: cover;
+				background-position:0 0px;
 			}
 			.body_two h2{
 				font-size: 0.23rem;
@@ -53,6 +54,7 @@
 				text-align: center;
 				line-height: 0.42rem;
 				margin:.30rem auto;
+				margin-top:3%;
 				display: block;
 				background-color: #093389;
 				color: white;
@@ -130,19 +132,20 @@
 			.bg_four{
 				width: 100%;
 			  	height: 58%;
-				background:url(../img/app-bg.png) 0 0 no-repeat;
+				background:url(../img/app-bg-1.png) 0 0 no-repeat;
 				background-size: cover;
+				background-position:-5px 0;
 				overflow: hidden;
 				position: relative;
 			}
 			.bg_four .head{
 				display: flex;
 				align-items:center;
-				width: 36%;
-				height: 45%;
+				width: 40%;
+				height: 50%;
 				border-radius: 5px;
 				position: absolute;
-				left: 1.1rem;
+				left: 1rem;
 				top: 0.66rem;
 				
 				overflow: hidden;
@@ -156,12 +159,14 @@
 				font-size: 0.18rem;
 				text-align: center;
 				font-family:"方正黑体简体" ;
-				margin-top:64% ;
+				margin-top:70% ;
+				
 			}
 			.bg_four h3{
 				font-size: 0.165rem;
 				margin-top: 0.06rem;
 				text-align: center;
+				
 			}
 			/*蓝色长条*/
 			.border_four{
@@ -613,7 +618,7 @@
     		.seat{
     			width: 100%;
     			height: 100%;
-    			background: url(../img/seat.jpg) 0 0 no-repeat;
+    			background: url(../img/seat.png) 0 0 no-repeat;
     			background-size: cover;
-    			background-position: center; 
+    			background-position: 0 -12px; 
     		}

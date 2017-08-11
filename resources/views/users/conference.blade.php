@@ -112,7 +112,7 @@
                 <tr>
                     <td class="times">11:30-13:30</td>
                     <td>午餐</td>
-                    <td>入住酒店餐厅</td>
+                    <td>国际青年文化中心--8楼中庭</td>
                 </tr>
                 <tr>
                     <td class="times">12:00</td>
