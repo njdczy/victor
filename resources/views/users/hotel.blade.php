@@ -3,8 +3,8 @@
     <script src="/static/js/common.js"></script>
     <div class="contain_five">
         <div class="pos_1 position on"></div>
-        <div class="pos_2 position"></div>
-        <div class="pos_3 position pos_4"></div>
+        <!-- <div class="pos_2 position"></div>
+  			<div class="pos_3 position"></div> -->
         <img src="/static/img/top-hotel.jpg"/>
         <p class="hotel_info"><span>会场与酒店信息</span></p>
 
@@ -15,7 +15,7 @@
         <div class="main">主会场地址</div>
         <p class="main-pos">南京国际青年文化中心</p>
         <p class="main-pos">南京建邺区金沙江西街9号</p>
-        <div class="cheer">欢迎晚宴</div>
+        <!--<div class="cheer">欢迎晚宴</div>
         <p class="cheer-pos">南京国际博览会议中心（金陵会议中心） 三楼钟山厅</p>
         <p class="cheer-pos_1">地址：建邺区江东中路300号（近白龙江西街）</p>
         <div class="hotel">经销商入住酒店</div>
@@ -30,7 +30,7 @@
             @else
                 无
             @endif
-        </p>
+        </p>-->
     </div>
     </body>
     <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
