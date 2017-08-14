@@ -116,10 +116,12 @@ class VusersController extends Controller
                 });
             }
             $grid->salesman_id('业务员')->display(function($salesman_id) {
-                return $salesman_id?Salesman::find($salesman_id)->name:'';
+                $salesman = Salesman::find($salesman_id);
+                return $salesman?$salesman->name:'';
             });
             $grid->regional_manager_id('区域经理')->display(function($regional_manager_id) {
-                return $regional_manager_id?Manager::find($regional_manager_id)->name:'';
+                $regional_manager = Manager::find($regional_manager_id);
+                return $regional_manager?$regional_manager->name:'';
             });
 
 
@@ -256,13 +258,13 @@ class VusersController extends Controller
                 if ($vuser->is_need_sms && $vuser->mobile) {
                     if ($request->get('content_number') == 1) {
                         $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
-                            rawurlencode("尊敬的经销商，2017 VICTOR品牌大会暨秋冬新品发布会欢迎您！请点击链接获取入场凭证 v.xhbuy.cn/u/".$vuser->id);
+                            rawurlencode("尊敬的经销商，2018VICTOR品牌大会暨春夏新品发布会欢迎您！请点击链接获取入场凭证 v.xhbuy.cn/u/".$vuser->id);
                     } else if ($request->get('content_number') == 2) {
                         $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
-                            rawurlencode("尊敬的经销商，欢迎晚宴于下午18:00开始，地址：南京国际博览会议中心，三楼钟山厅，欢迎莅临，谢谢！");
+                            rawurlencode("尊敬的经销商，欢迎晚宴于下午18:00开始，地址：南京国际青年文化中心，五楼南京厅，欢迎莅临，谢谢！");
                     } else if ($request->get('content_number') == 3) {
                         $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
-                            rawurlencode("尊敬的经销商， 2017 VICTOR 品牌大会暨春夏新品发布会于上午8:30正式开始，地址：南京国际青年文化中心，五楼中华厅，欢迎莅临，谢谢！");
+                            rawurlencode("尊敬的经销商，2018VICTOR品牌大会暨春夏新品发布会于上午8:30正式开始，地址：南京国际青年文化中心，五楼南京厅，欢迎莅临，谢谢！");
                     } else if ($request->get('content_number') == 4) {
                         $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
                             rawurlencode("尊敬的经销商，南京天气：3月20日小雨转阴9-12°C；3月21日多云9-15°C；3月22日阴转暴雨12-13°C。出行请带好雨伞，注意保暖！");
