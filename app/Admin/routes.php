@@ -23,6 +23,7 @@ Route::group([
         'hotels' => 'HotelsController',
         'provinces' => 'ProvincesController',
         'posts' => 'PostsController',
+        'jxs' => 'JxsController',
     ]);
 
     $router->post('vusers/enter', 'VusersController@enter');

@@ -8,6 +8,7 @@ use App\Admin\Extensions\Tools\BatchSend;
 use App\Http\Controllers\Controller;
 
 
+use App\Jxs;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Form;
@@ -64,7 +65,10 @@ class VusersController extends Controller
                 });
                 $grid->mobile('手机号')->editable();
                 $grid->code('客户编码')->editable();
-                $grid->company('客户')->editable();
+                $grid->company('客户')->display(function ($company) {
+                    $jxs = Jxs::find($company);
+                    return $jxs ? $jxs->name : '';
+                });
                 $grid->hotel('入住饭店')->display(function ($hotel) {
                     return $hotel ? Hotel::find($hotel)->name : '';
                 });
@@ -228,7 +232,7 @@ class VusersController extends Controller
             $form->switch('is_need_sms','推送短信');
             $form->switch('is_enter','报名');
             $form->select('regional_manager_id', '区域经理')->options($manager_arr);
-            $form->text('company', '客户单位');
+            $form->select('company', '客户单位')->options(Jxs::all()->pluck('name', 'id'))->rules('numeric|min:1');
             $form->select('hotel', '入住酒店')->options($hotel_arr);
         });
     }
