@@ -30,7 +30,7 @@ function post($curlPost,$url){
 function get_sms_content($content_number = 1)
 {
     if ($content_number == 1) {
-        return "尊敬的经销商，2018VICTOR品牌大会暨春夏新品发布会欢迎您！请点击链接 v.xhbuy.cn/u/【变量】获取入场凭证";
+        return "尊敬的经销商，2018VICTOR品牌大会暨春夏新品发布会欢迎您！请点击链接 v.xhbuy.cn/u/【变量】 获取入场凭证";
     }
     if ($content_number == 2) {
         return "尊敬的经销商，欢迎晚宴于下午18:00开始，地址：南京国际青年文化中心，五楼南京厅，欢迎莅临，谢谢！";
