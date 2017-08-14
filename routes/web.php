@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('users/welcome');
-});
+Route::get('/u', 'IndexController@conference');
+Route::get('/', 'IndexController@conference');
 
 Route::get('/u/{id}', 'IndexController@welcome')->name('invite');
+
 
 Route::get('/intro', 'IndexController@intro')->name('intro');
 Route::get('/conference', 'IndexController@conference')->name('conference');
