@@ -111,11 +111,11 @@ class SignLogsController extends Controller
                     // 应签到人数 e
                 });
                 $grid->sign_count('实签到人数');
-                $grid->should_vcat_ids('应签到家数')->display(function () {
+                $grid->should_vcat_ids('应签到部门')->display(function () {
                     return DB::table('demo_taggables')->where('taggable_id','=',$this->id)->count();
                     //return $this->should_vcat_ids?count(explode($this->should_vcat_ids,',')):0;
                 });
-                $grid->sign_vcat_ids('实签到家数')->display(function () {
+                $grid->sign_vcat_ids('实签到部门')->display(function () {
                     return DB::table('demo_taggables')
                         ->where('taggable_id','=',$this->id)
                         ->where('is_sign','=',1)
