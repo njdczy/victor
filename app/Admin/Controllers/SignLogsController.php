@@ -122,6 +122,13 @@ class SignLogsController extends Controller
                         ->count();
                     //return $this->should_vcat_ids?count(explode($this->sign_vcat_ids,',')):0;
                 });
+                $grid->column('sign_company_count','实到经销商数')->display(function ()  {
+                    //实到经销商s
+                    $sign_vuser_id = SignLog::where('conference_id',$this->id)->pluck('vuser_id')->toArray();
+                    $sign_company = Vuser::whereIn('id',$sign_vuser_id)->pluck('company')->toArray();
+                    return count(array_unique($sign_company));
+                    //实到经销商e
+                });
 
 //                foreach ($conference_ids_array as $conference_id) {
 //                    $the_tmp = [];
