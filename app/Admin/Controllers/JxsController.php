@@ -72,4 +72,25 @@ class JxsController extends Controller
             $form->text('name', '经销商名称')->rules('required');
         });
     }
+
+    public function destroy($id)
+    {
+        if (Jxs::where('id',$id)->first()->vusers) {
+            return response()->json([
+                'status'  => false,
+                'message' => '有参会人是是经销商的，不允许删除',
+            ]);
+        }
+        if ($this->form()->destroy($id)) {
+            return response()->json([
+                'status'  => true,
+                'message' => trans('admin::lang.delete_succeeded'),
+            ]);
+        } else {
+            return response()->json([
+                'status'  => false,
+                'message' => trans('admin::lang.delete_failed'),
+            ]);
+        }
+    }
 }

@@ -71,4 +71,25 @@ class ManagersController extends Controller
             $form->text('name', '区域经理名称')->rules('required');
         });
     }
+
+    public function destroy($id)
+    {
+        if (Manager::where('id',$id)->first()->vusers) {
+            return response()->json([
+                'status'  => false,
+                'message' => '有参会人是住该区域经理负责的，不允许删除',
+            ]);
+        }
+        if ($this->form()->destroy($id)) {
+            return response()->json([
+                'status'  => true,
+                'message' => trans('admin::lang.delete_succeeded'),
+            ]);
+        } else {
+            return response()->json([
+                'status'  => false,
+                'message' => trans('admin::lang.delete_failed'),
+            ]);
+        }
+    }
 }
