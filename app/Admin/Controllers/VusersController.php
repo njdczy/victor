@@ -262,7 +262,7 @@ class VusersController extends Controller
                 if ($vuser->is_need_sms && $vuser->mobile) {
                     if ($request->get('content_number') == 1) {
                         $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
-                            rawurlencode("尊敬的经销商，2018VICTOR品牌大会暨春夏新品发布会欢迎您！请点击链接v.xhbuy.cn/u/".$vuser->id." 获取入场凭证");
+                            rawurlencode("尊敬的经销商，2018VICTOR品牌大会暨春夏新品发布会欢迎您！请点击链接 v.xhbuy.cn/u/".$vuser->id." 获取入场凭证");
                     } else if ($request->get('content_number') == 2) {
                         $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
                             rawurlencode("尊敬的经销商，欢迎晚宴于下午18:00开始，地址：南京国际青年文化中心，五楼南京厅，欢迎莅临，谢谢！");
