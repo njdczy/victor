@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Hotel;
+use App\Jxs;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -17,6 +18,7 @@ class VusersController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $user->company = Jxs::where('id', $user->company)->value('name');
         return view('users/index',compact('user'));
     }
 

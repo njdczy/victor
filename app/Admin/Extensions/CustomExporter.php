@@ -3,6 +3,7 @@
 namespace App\Admin\Extensions;
 
 use App\Hotel;
+use App\Jxs;
 use App\Manager;
 use App\Post;
 use App\Province;
@@ -60,6 +61,7 @@ class CustomExporter extends AbstractExporter
         $salesman_id_array = array_unique(array_column($data, 'salesman_id'));
         $regional_manager_id_array = array_unique(array_column($data, 'regional_manager_id'));
         $hotel_id_array = array_unique(array_column($data, 'hotel'));
+        $company_id_array = array_unique(array_column($data, 'company'));
 
         $vcat_values_array = Vcat::whereIn('id', $vcat_id_array)->pluck('title', 'id')->all();
 
@@ -71,6 +73,7 @@ class CustomExporter extends AbstractExporter
         $salesman_values_array = Salesman::whereIn('id', $salesman_id_array)->pluck('name', 'id')->all();
         $manager_values_array = Manager::whereIn('id', $regional_manager_id_array)->pluck('name', 'id')->all();
         $hotel_values_array = Hotel::whereIn('id', $hotel_id_array)->pluck('name', 'id')->all();
+        $company_values_array = Jxs::whereIn('id', $company_id_array)->pluck('name', 'id')->all();
 
         $export_data[] = $this->execl_title;
         foreach ($data as $key => $value) {
@@ -84,7 +87,7 @@ class CustomExporter extends AbstractExporter
             $export[] = $value['post_id']?$post_values_array[$value['post_id']]:'';                 //职务
             $export[] = $value['mobile'];                   //手机号
             $export[] = $value['code'];                   //客户编码
-            $export[] = $value['company'];                   //客户
+            $export[] = $value['company']?$company_values_array[$value['company']]:'';                   //客户
             $export[] = $value['hotel']?$hotel_values_array[$value['hotel']]:'';                   //入住饭店
             $export[] = $value['has_attend'] ? '是' : '否';                   //是否参加过会议
             $export[] = $value['salesman_id']?$salesman_values_array[$value['salesman_id']]:'';                   //业务员
