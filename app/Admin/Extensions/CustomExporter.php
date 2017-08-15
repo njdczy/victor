@@ -87,11 +87,11 @@ class CustomExporter extends AbstractExporter
             $export[] = $value['post_id']?$post_values_array[$value['post_id']]:'';                 //职务
             $export[] = $value['mobile'];                   //手机号
             $export[] = $value['code'];                   //客户编码
-            $export[] = $value['company']?$company_values_array[$value['company']]:'';                   //客户
-            $export[] = $value['hotel']?$hotel_values_array[$value['hotel']]:'';                   //入住饭店
+            $export[] = array_key_exists($value['company'],$hotel_values_array)?$company_values_array[$value['company']]:'';                   //客户
+            $export[] = array_key_exists($value['hotel'],$hotel_values_array)?$hotel_values_array[$value['hotel']]:'';                   //入住饭店
             $export[] = $value['has_attend'] ? '是' : '否';                   //是否参加过会议
-            $export[] = $value['salesman_id']?$salesman_values_array[$value['salesman_id']]:'';                   //业务员
-            $export[] = $value['regional_manager_id']?$manager_values_array[$value['regional_manager_id']]:'';                   //区域经理
+            $export[] = array_key_exists($value['salesman_id'],$hotel_values_array)?$salesman_values_array[$value['salesman_id']]:'';                   //业务员
+            $export[] = array_key_exists($value['regional_manager_id'],$hotel_values_array)?$manager_values_array[$value['regional_manager_id']]:'';                   //区域经理
             $export[] = $value['is_need_sms'] ? '是' : '否';                   //是否推送短信
             $export_data[] = $export;
         }
