@@ -274,7 +274,7 @@ class VusersController extends Controller
                             rawurlencode("尊敬的经销商，2018VICTOR品牌大会暨春夏新品发布会于上午8:30正式开始，地址：南京国际青年文化中心，五楼南京厅，欢迎莅临，谢谢！");
                     } else if ($request->get('content_number') == 4) {
                         $post_data = "account=C30735724&password=4db205b4c2434f1fee8735b22eddd8ed&mobile=".$vuser->mobile."&content=".
-                            rawurlencode("尊敬的经销商，南京天气：3月20日小雨转阴9-12°C；3月21日多云9-15°C；3月22日阴转暴雨12-13°C。出行请带好雨伞，注意保暖！");
+                            rawurlencode("尊敬的经销商，南京天气：8月22日多云26~33℃；8月23日晴26~34℃；8月24日中雨28~34℃。出行请带好雨伞，注意防暑！");
                     }
 
                     $responses =  xml_to_array(post($post_data, $target));
