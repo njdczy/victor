@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Jxs;
 use App\SignLog;
 use App\Vuser;
 use App\Conference;
@@ -46,7 +47,7 @@ class SignController extends Controller
                     'vcat_two' => $vcats[0],
                     'province_name' => $province[0],
                     'vuser_name' => $vuser->name,
-                    'company_name' => $vuser->company,
+                    'company_name' => Jxs::where('id',$vuser->company)->value('name'),
                     'salesman_name' => $salesman[0],
                     'sign_time' => Carbon::now()->toDateTimeString(),
                 ];
