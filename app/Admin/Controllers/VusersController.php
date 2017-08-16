@@ -105,7 +105,10 @@ class VusersController extends Controller
                 });
                 $grid->mobile('手机号');
                 $grid->code('客户编码');
-                $grid->company('客户');
+                $grid->company('客户')->display(function ($company) {
+                    $jxs = Jxs::find($company);
+                    return $jxs ? $jxs->name : '';
+                });
                 $grid->hotel('入住饭店')->display(function ($hotel) {
                     return $hotel ? Hotel::find($hotel)->name : '';
                 });
