@@ -91,9 +91,8 @@
                 </tr>
                 <tr>
                     <td class="times">14:00-15:00</td>
-                    <td>VICTOR&amp;SIX STAR
-                        品牌战略合作
-                        签约仪式
+                    <td>VICTOR&nbsp;&amp;&nbsp;SIX STAR
+                        品牌战略合作签约仪式
                     </td>
                     <td>国际青年文化中心--5楼建邺厅</td>
                 </tr>
