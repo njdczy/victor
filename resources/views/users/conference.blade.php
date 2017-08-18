@@ -55,6 +55,12 @@
 					<td>国际青年文化中心--5楼中庭试打区</td>
                 </tr>
                 <tr>
+                    <td class="times">14:00-15:00</td>
+                    <td>VICTOR &amp; SIX STAR
+                        品牌战略合作签约仪式</td>
+                    <td>国际青年文化中心--5楼建邺厅</td>
+                </tr>
+                <tr>
                     <td  class="times">18:00-21:30</td>                
 					<td>欢迎晚宴</td>
 					<td>国际青年文化中心--5楼南京厅</td>
